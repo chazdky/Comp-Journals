@@ -1,0 +1,83 @@
+\documentclass{report}
+
+\usepackage{textcomp}
+\usepackage[demo]{graphicx}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{outlines}
+%===================================
+\newcommand{\classinfo}{{\bf Networking Security \\ Lab 5}\\{\it CIT
+288}\\{Chaz Davis}}
+\newcommand{\semester}{BCTC \\ Spring 2020}
+%===================================
+\newcommand{\mysection}[1]{\section*{#1}}
+\newcommand{\mysubsection}[2]{\textbf{\romannumeral #1) #2}}
+%===================================
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{ \fancyplain{}{Chaz Davis} }
+\rhead{ \fancyplain{}{\today} }
+\cfoot{ \fancyplain{}{\thepage} }
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%===================================
+\title{\classinfo}
+\author{\semester}
+\date{\today}
+
+%===================================
+
+\begin{document}
+
+\maketitle
+
+%===================================
+\mysection{\textbf{Lab 5 questions}}
+
+ 
+\mysubsection{1}{What does the route add command do?}
+\\It is used to assign a permanent or static route which will change only if the administrator manually modify the values of the new route.
+\hfill\break
+
+\noindent\mysubsection{2}{Why is NAT so important to the security of a private network?}
+\\NAT is a very important aspect of firewall security. It conserves the number of public addresses used within an organization, and it allows for stricter control of access to resources on both sides of the firewall.
+\hfill\break
+
+\noindent\mysubsection{3}{What is "sniffing"?}
+\\Sniffing involves capturing, decoding, inspecting and interpreting the information inside a network packet on a TCP/IP network. The purpose is to steal information, usually user IDs, passwords, network details, credit card numbers, etc.
+\hfill\break
+
+\noindent\mysubsection{4}{If a host is known to be alive on a network, what could cause it NOT to respond to ping requests?}
+\\It means that your ICMP packet (ping) was silently discarded with no response sent. That might happen for several reasons:
+
+\begin{itemize}
+  \item{Ping is disabled on router or (more likely) end point.} 
+  \item{Network is congested or misconfigured} 
+  \item{The firewall has ICMP disabled for security} 
+\end{itemize}
+\hfill\break
+
+\noindent\mysubsection{5}{How can we view ALL interfaces on a Linux machine in a single command?}
+\\There are actually many ways:
+\begin{itemize}
+  \item{debian} {\scriptsize{\verb$ifconfig -a$}\normalsize}  
+  \item{debian} {\scriptsize{\verb$netstat -i$}\normalsize} 
+  \item{my arch install} {\scriptsize{\verb$nmcli device status$}\normalsize} 
+  \item{also my arch(configured with network manager)} {\scriptsize{\verb$nmcli connection show$}\normalsize} 
+\end{itemize}
+
+\hfill\break
+
+\noindent\mysubsection{6}{What switch in the ping command for Linux will limit the number of pings?}
+\\You can run the ping command with -c and a number:
+{\scriptsize{\verb$ping 192.168.0.0 -c 4$}\normalsize} for example. 
+
+
+
+%===================================
+
+\end{document}

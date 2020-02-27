@@ -1,0 +1,141 @@
+\documentclass{report}
+
+\usepackage{subfiles}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{url}
+\usepackage{graphicx,color}
+\usepackage[font=scriptsize]{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage{blindtext}
+\usepackage{fullpage}
+\usepackage{footnote}
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+\usepackage{longtable}
+\usepackage{tcolorbox}
+\usepackage{boxedminipage}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{fancyvrb}
+\usepackage{outlines}
+\usepackage{hyperref}
+%===================================
+\renewcommand{\chaptername}{Lab}
+%===================================
+\newcommand\tab[1][0.05cm]{\hspace*{#1}}
+\newcommand{\command}[1]{\textcolor{blue}{#1}}
+%===================================
+\newcommand{\titulo}{{\bf RHEL 124 \\ Lab Journal}\\{\it CIT 217}\\Chaz Davis}
+\newcommand{\autor}{BCTC \\ Spring 2020}
+%===================================
+\newcommand{\mysection}[1]{\section*{#1}}
+\newcommand{\mysubsection}[2]{\textbf{\romannumeral #1) #2}}
+%===================================
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{ \fancyplain{}{Chaz Davis} }
+\rhead{ \fancyplain{}{\today} }
+\cfoot{ \fancyplain{}{\thepage} }
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%===================================
+\title{\titulo}
+\author{\autor}
+\date{\today}
+
+%===================================
+\begin{document}
+
+\maketitle
+%\listoffigures - List the Figures
+%\listoftables - List the Tables
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subfile{Week2LabAssignment_CIT217/Week2LabAssignment.tex}
+%===================================
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subfile{Week3LabAssignment_CIT217/Week3LabAssignment.tex}
+%===================================
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subfile{Week4LabAssignment_CIT217/Week4LabAssignment_CDavis.tex}
+%===================================
+
+% \newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subfile{Week5LabAssignment_CIT217/Week5LabAssignment_CDavis.tex}
+%===================================
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subfile{}
+%===================================
+
+% \newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subfile{}
+%===================================
+
+% \newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subfile{}
+%===================================
+
+% \newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subfile{}
+%===================================
+
+% \newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subfile{}
+%===================================
+
+% \newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subfile{}
+%===================================
+
+% \newpage
+
+%===================================
+
+\end{document}
+

@@ -1,0 +1,221 @@
+\document{article}
+
+\begin{document}
+
+\title{1.1.1.8 - Trace Route: discover the network}
+
+\author{Chaz Davis}
+
+\maketitle
+
+\section{Getting IP Tables}
+\subsection{Sales Machine}
+I clicked on the sales machine, clicked desktop, and when i opened the command prompt i ran ip config.
+% TODO:  <23-01-20, yourname> % insert screen shot of ipconfig here
+
+the sales ip address was 172.16.0.0
+\subsection{b2server}
+i ran the nslookup on b2server
+its address was:
+Non-authoritative answer:
+Name:   b2server.pt.pka
+Address:   128.107.64.254
+\subsubsection{tracert}
+i then ran a tracert between b2server and sales pc
+Tracing route to 128.107.64.254 over a maximum of 30 hops: 
+
+  1   10 ms     0 ms      0 ms      172.16.0.1
+  2   1 ms      1 ms      1 ms      64.100.150.2
+  3   0 ms      1 ms      1 ms      64.104.222.2
+  4   12 ms     10 ms     10 ms     64.104.222.6
+  5   *         13 ms     11 ms     128.107.64.254
+
+\subsubsection{telnet}
+i then telnetted to the first ip address in the tracert: 172.16.0.1
+i entered the passwd cisco to gain access. i the logged in as priveledged exec with passwd class
+
+\subsection{R4}
+\subsubsection{tracert from R4}
+when you run the tracert command from the router you have to spell the entire command out traceroute
+R4>traceroute 128.107.64.254
+Type escape sequence to abort.
+R4#traceroute 128.107.64.254
+Type escape sequence to abort.
+Tracing the route to 128.107.64.254
+
+  1   64.100.150.2    1 msec    0 msec    0 msec    
+  2   64.104.222.2    0 msec    1 msec    1 msec    
+  3   64.104.222.6    0 msec    0 msec    0 msec    
+  4   128.107.64.254  1 msec    2 msec    4 msec    
+
+\subsubsection{show ip interface brief}
+i ran show ip interface brief on R4 router:
+Interface              IP-Address      OK? Method Status                Protocol 
+GigabitEthernet0/0     172.16.0.1      YES manual up                    up 
+GigabitEthernet0/1     unassigned      YES unset  administratively down down 
+Serial0/0/0            64.100.150.1    YES manual up                    up 
+Serial0/0/1            unassigned      YES unset  up                    up 
+Serial0/0/1.1          64.100.200.1    YES manual up                    up 
+Vlan1                  unassigned      YES unset  administratively down down
+
+\subsubsection{show run}
+
+I then ran the show run command
+Building configuration...
+
+Current configuration : 1918 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname R4
+!
+!
+!
+enable password 7 0822404F1A0A
+!
+!
+ip dhcp excluded-address 172.16.0.1
+ip dhcp excluded-address 172.16.0.2
+ip dhcp excluded-address 172.16.0.3
+ip dhcp excluded-address 172.16.0.4
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+username Tier3a password 7 0822455D0A16
+username administrator password 7 0822455D0A16
+!
+!
+license udi pid CISCO1941/K9 sn FTX1524OSTD
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain-name Branch
+ip host branchserver 172.16.0.3 
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 172.16.0.1 255.255.255.0
+ ip nat inside
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/0/0
+ ip address 64.100.150.1 255.255.255.252
+ encapsulation ppp
+ ppp authentication chap
+ ip nat outside
+!
+interface Serial0/0/1
+ no ip address
+ encapsulation frame-relay
+ ip nat outside
+ clock rate 2000000
+!
+interface Serial0/0/1.1 point-to-point
+ ip address 64.100.200.1 255.255.255.252
+ frame-relay interface-dlci 201
+ ip nat outside
+ clock rate 2000000
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip nat inside source list 1 interface Serial0/0/1.1 overload
+ip nat inside source static tcp 172.16.0.3 80 64.100.150.1 80 
+ip nat inside source static tcp 172.16.0.3 80 64.100.200.1 80 
+ip nat inside source static tcp 172.16.0.3 25 64.100.200.1 25 
+ip nat inside source static tcp 172.16.0.3 443 64.100.200.1 443 
+ip classless
+ip route 10.0.0.0 255.0.0.0 64.100.200.2 
+ip route 0.0.0.0 0.0.0.0 64.100.150.2 
+!
+ip flow-export version 9
+!
+!
+access-list 1 permit 172.16.0.0 0.0.0.255
+!
+no cdp run
+!
+banner motd ^CWarning - Unauthorized Access Prohibited^C
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ exec-timeout 0 0
+ password 7 0822455D0A16
+ login
+line vty 5 15
+ exec-timeout 0 0
+ no login
+!
+!
+!
+end
+
+\subsection{serial0/0/0}
+i then used tel net to get to serial0/0/0 using the ip adress  64.100.150.1
+i looged in to exec and then priveledged exec
+
+\subsubsection{show ip route}
+i issued the show ip route command:
+
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is 64.100.150.2 to network 0.0.0.0
+
+S    10.0.0.0/8 [1/0] via 64.100.200.2
+     64.0.0.0/8 is variably subnetted, 5 subnets, 2 masks
+C       64.100.150.0/30 is directly connected, Serial0/0/0
+L       64.100.150.1/32 is directly connected, Serial0/0/0
+C       64.100.150.2/32 is directly connected, Serial0/0/0
+C       64.100.200.0/30 is directly connected, Serial0/0/1.1
+L       64.100.200.1/32 is directly connected, Serial0/0/1.1
+     172.16.0.0/16 is variably subnetted, 2 subnets, 2 masks
+C       172.16.0.0/24 is directly connected, GigabitEthernet0/0
+L       172.16.0.1/32 is directly connected, GigabitEthernet0/0
+S*   0.0.0.0/0 [1/0] via 64.100.150.2
+
+
+
+\end{document}

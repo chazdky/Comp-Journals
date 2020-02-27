@@ -1,0 +1,140 @@
+\documentclass[../EngineeringJournal_CDavis.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Configuring \linebreak[1] Dynamic Routing \hspace*{\fill}{2020}}
+\noindent\textbf{{Packet Tracer Labs} \hspace*{\fill}{\textbf{CIT 167}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+\addcontentsline{toc}{chapter}{Useful Commands: Dynamic Routing}
+%===================================
+
+%=================================
+\mysection{Access RIP configuration mode}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+{\bf{router rip}}
+\scriptsize
+\begin{outline}
+  \1 Prompt will show up as \verb$Router(config-router)#$
+  \1 When enabling RIP, the default version is RIPv1.
+  \1 To disable and eliminate RIP, use the `no router rip` global configuration command. This command stops the RIP process and erases all existing RIP configurations.
+  \1 Upon enabling, need to advertise networks with `network <network-address>`
+\end{outline}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%=================================
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+{\bf{Enable and Verify RIPv2}}
+\scriptsize
+
+By {\emph{default, when a RIP process is configured on a Cisco router, it is running
+RIPv1}}, as shown in Figure 1. However, even though the router only sends RIPv1
+messages, it can interpret both RIPv1 and RIPv2 messages. A {\emph{RIPv1 router ignores
+the RIPv2 fields in the route entry.}}
+
+Use the `version 2` router configuration mode command to enable RIPv2, as shown in
+Figure 2. Notice how the `show ip protocols` command verifies that R2 is now configured
+to send and receive version 2 messages only. The RIP process now includes the subnet
+mask in all updates, making {\emph{RIPv2 a classless routing protocol.}}
+
+Note: Configuring `version 1` enables RIPv1 only, while configuring `no version` returns the router to the default setting of sending version 1 updates but listening for version 1 and version 2 updates.
+
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%=================================
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+  {\bf{Propogate a Default Route}}
+\scriptsize
+\begin{verbatim}
+
+ The `default-information originate` router configuration command. 
+ This instructs R1 to originate default information, 
+ by propagating the static default route in RIP updates.
+
+ \end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%=================================
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+  {\bf{RIP Routing Configuration Mode Commands}}
+\scriptsize
+\begin{verbatim}
+
+```
+network <network-address>       # Enables RIP on all interfaces on that network.
+version 2                       # Enables RIPv2
+version 1                       # Enables RIPv1 only
+no version                      # Returns to default setting: send v1, listen v1+v2
+no auto-summary                 # Disables default automatic summarization (RIPv2)
+
+passive-interface <interface>   # Prevent transmission of routing updates out interface
+				# However, still allows network to be advertised
+passive-interface g0/0
+passive-interface default       # Makes all interfaces passive
+no passive-interface <intf>     # Re-enables passive transmission of routing updates
+```
+\end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%=================================
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+{\bf{Verify RIP Routing}}
+\scriptsize
+\begin{verbatim}
+```
+show ip protocols
+show ip route
+```
+\end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%=================================
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+{\bf{ Propogate a Default Route }}
+\scriptsize
+\begin{verbatim}
+To propagate a default route in RIP, 
+the edge router must be configured with a default static route 
+using the `ip route 0.0.0.0 0.0.0.0` command:
+
+```
+ip route 0.0.0.0 0.0.0.0 <exit-interface> <next-hop IP>
+```
+
+Next configure router to propogate the static default route in RIP updates:
+
+```
+router rip
+default-information originate
+```
+\end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+%===================================
+
+\end{document}

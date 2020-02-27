@@ -1,0 +1,215 @@
+\documentclass[../EngineeringJournal_CDavis.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Useful Bits \linebreak[1] Dynamic Routing \hspace*{\fill}{2020}}
+\noindent\textbf{{Packet Tracer Labs} \hspace*{\fill}{\textbf{CIT 167}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+\addcontentsline{toc}{chapter}{Useful Bits: Dynamic Routing}
+
+%===================================
+\mysection{\textbf{RIP Overview}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+The Routing Information Protocol (RIP) uses broadcast UDP data packets to exchange routing information. Cisco software sends routing information updates every 30 seconds, which is termed advertising. If a device does not receive an update from another device for 180 seconds or more, the receiving device marks the routes served by the nonupdating device as unusable. If there is still no update after 240 seconds, the device removes all routing table entries for the nonupdating device.
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+A device that is running RIP can receive a default network via an update from another device that is running RIP, or the device can source the default network using RIP. In both cases, the default network is advertised through RIP to other RIP neighbors.
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+The Cisco implementation of RIP Version 2 (RIPv2) supports plain text and message digest algorithm 5 (MD5) authentication, route summarization, classless interdomain routing (CIDR), and variable-length subnet masks (VLSMs).
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%===================================
+\mysection{\textbf{RIP Routing Updates}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+The Routing Information Protocol (RIP) sends routing-update messages at regular intervals and when the network topology changes. When a device receives a RIP routing update that includes changes to an entry, the device updates its routing table to reflect the new route. The metric value for the path is increased by 1, and the sender is indicated as the next hop. RIP devices maintain only the best route (the route with the lowest metric value) to a destination. After updating its routing table, the device immediately begins transmitting RIP routing updates to inform other network devices of the change. These updates are sent independently of the regularly scheduled updates that RIP devices send.
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%===================================
+\mysection{\textbf{RIP Routing Metric}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+The Routing Information Protocol (RIP) uses a single routing metric to measure the distance between the source and the destination network. Each hop in a path from the source to the destination is assigned a hop-count value, which is typically 1. When a device receives a routing update that contains a new or changed destination network entry, the device adds 1 to the metric value indicated in the update and enters the network in the routing table. The IP address of the sender is used as the next hop. If an interface network is not specified in the routing table, it will not be advertised in any RIP update.
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%===================================
+\mysection{\textbf{Authentication in RIP}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+The Cisco implementation of the Routing Information Protocol (RIP) Version 2 (RIPv2) supports authentication, key management, route summarization, classless interdomain routing (CIDR), and variable-length subnet masks (VLSMs).
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+By default, the software receives RIP Version 1 (RIPv1) and RIPv2 packets, but sends only RIPv1 packets. You can configure the software to receive and send only RIPv1 packets. Alternatively, you can configure the software to receive and send only RIPv2 packets. To override the default behavior, you can configure the RIP version that an interface sends. Similarly, you can also control how packets received from an interface are processed.
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+RIPv1 does not support authentication. If you are sending and receiving RIP v2 packets, you can enable RIP authentication on an interface.
+\end{tcolorbox}
+\hspace{0.2cm}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+The key chain determines the set of keys that can be used on the interface. Authentication, including default authentication, is performed on that interface only if a key chain is configured. For more information on key chains and their configuration, see the “Managing Authentication Keys” section in the “Configuring IP Routing Protocol-Independent Features” chapter in the Cisco IOS IP Routing: Protocol-Independent Configuration Guide.
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+Cisco supports two modes of authentication on an interface on which RIP is enabled: plain-text authentication and message digest algorithm 5 (MD5) authentication. Plain-text authentication is the default authentication in every RIPv2 packet.
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%===================================
+\mysection{\textbf{Note}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+Do not use plain text authentication in RIP packets for security purposes, because the unencrypted authentication key is sent in every RIPv2 packet. Use plain-text authentication when security is not an issue; for example, you can use plain-text authentication to ensure that misconfigured hosts do not participate in routing.
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%===================================
+\mysection{\textbf{Exchange of Routing Information}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+Routing Information Protocol (RIP) is normally a broadcast protocol, and for RIP routing updates to reach nonbroadcast networks, you must configure the Cisco software to permit this exchange of routing information.
+
+To control the set of interfaces with which you want to exchange routing updates, you can disable the sending of routing updates on specified interfaces by configuring the passive-interface router configuration command.
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+You can use an offset list to increase increasing incoming and outgoing metrics to routes learned via RIP. Optionally, you can limit the offset list with either an access list or an interface.
+
+Routing protocols use several timers that determine variables such as the frequency of routing updates, the length of time before a route becomes invalid, and other parameters. You can adjust these timers to tune routing protocol performance to better suit your internetwork needs. You can make the following timer adjustments:
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+The rate (time, in seconds, between updates) at which routing updates are sent
+The interval of time, in seconds, after which a route is declared invalid
+The interval, in seconds, during which routing information about better paths is suppressed
+The amount of time, in seconds, that must pass before a route is removed from the routing table
+The amount of time for which routing updates will be postponed
+You can adjust the IP routing support in the Cisco software to enable faster convergence of various IP routing algorithms, and hence, cause quicker fallback to redundant devices. The total effect is to minimize disruptions to end users of the network in situations where quick recovery is essential
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+In addition, an address family can have timers that explicitly apply to that address family (or Virtual Routing and Forwarding [VRF]) instance). The timers-basic command must be specified for an address family or the system defaults for the timers-basic command are used regardless of the timer that is configured for RIP routing. The VRF does not inherit the timer values from the base RIP configuration. The VRF will always use the system default timers unless the timers are explicitly changed using the timers-basic command.
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%===================================
+\mysection{\textbf{RIP Route Summarization}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+Summarizing routes in RIP Version 2 improves scalability and efficiency in large networks. Summarizing IP addresses means that there is no entry for child routes (routes that are created for any combination of the individual IP addresses contained within a summary address) in the RIP routing table, reducing the size of the table and allowing the router to handle more routes.
+
+Summary IP address functions more efficiently than multiple individually advertised IP routes for the following reasons:
+
+The summarized routes in the RIP database are processed first.
+Any associated child routes that are included in a summarized route are skipped as RIP looks through the routing database, reducing the processing time required. Cisco routers can summarize routes in two ways:
+Automatically, by summarizing subprefixes to the classful network boundary when crossing classful network boundaries (automatic summary).
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%===================================
+\mysection{\textbf{Note}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+Automatic summary is enabled by default.
+\end{tcolorbox}
+\hspace{0.2cm}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+As specifically configured, advertising a summarized local IP address pool on the specified interface (on a network access server) so that the address pool can be provided to dialup clients.
+When RIP determines that a summary address is required in the RIP database, a summary entry is created in the RIP routing database. As long as there are child routes for a summary address, the address remains in the routing database. When the last child route is removed, the summary entry also is removed from the database. This method of handling database entries reduces the number of entries in the database because each child route is not listed in an entry, and the aggregate entry itself is removed when there are no longer any valid child routes for it.
+
+RIP Version 2 route summarization requires that the lowest metric of the "best route" of an aggregated entry, or the lowest metric of all current child routes, be advertised. The best metric for aggregated summarized routes is calculated at route initialization or when there are metric modifications of specific routes at advertisement time, and not at the time the aggregated routes are advertised.
+
+The ip summary-address rip routerconfiguration command causes the router to summarize a given set of routes learned via RIP Version 2 or redistributed into RIP Version 2. Host routes are especially applicable for summarization.
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+See the "Route Summarization Example" section at the end of this chapter for examples of using split horizon.
+\end{tcolorbox}
+\hspace{0.2cm}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+You can verify which routes are summarized for an interface using the show ip protocols EXEC command. You can check summary address entries in the RIP database. These entries will appear in the database only if relevant child routes are being summarized. To display summary address entries in the RIP routing database entries if there are relevant routes being summarized based upon a summary address, use the show ip rip database command in EXEC mode. When the last child route for a summary address becomes invalid, the summary address is also removed from the routing table.
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\newpage
+
+%===================================
+
+\end{document}

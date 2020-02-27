@@ -1,0 +1,257 @@
+\documentclass[../EngineeringJournal_CDavis.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter[Documenting The Network]{Documenting \linebreak[1] The Network \hspace*{\fill}{Jan 26, 2020}}
+\noindent\textbf{{Packet Tracer Lab 2} \hspace*{\fill}{\textbf{CIT 167}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+%===================================
+%===================================
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+- Important Commands for the Lab
+  \begin{itemize}
+	\item{show interface} displays the status of the router's interfaces
+	  \subitem{interface status} up/down
+	  \subitem{Protocol status on the device}
+	  \subitem{Utilization}
+	  \subitem{Errors}
+	  \subitem{MTU}
+	  \subitem{MTU}
+	\item{show ip interface (brief)} tons of useful info:
+	  \subitem{IP protocol status}
+	  \subitem{all its services}
+	  \subitem{all of its interfaces} and their protocols and status'
+	  \subitem{Ip address}
+	  \subitem{Layer 2 status}
+	  \subitem{layer 3 status}
+	  \subitem{} it is the config thats in the routers memory.
+	  \subitem{sh run} this is not updated upon changes. but upon running the command copy running-configuration startup-configuration
+	\item{show ip route} 
+	  \subitem{}lists all networks that the router can reach 
+	  \subitem{}their metric - the routers preference for them and how to get there
+	\item{show version} gives the routers config register (firmware settings)
+	  \subitem{the last time it was booted}
+	  \subitem{the version of the IOS}
+	  \subitem{the model of router}
+	  \subitem{the amount of ram and Flash}
+  \end{itemize}
+\normalsize  
+\end{tcolorbox}
+\hspace{0.2cm}
+
+\newpage
+
+%===================================
+
+\mysection{\textbf{Part 1: filling in the table}}
+
+\mysubsection{1}{R2}
+I logged into R2 and ran the following commands 
+  i ran show ip config
+
+\begin{mdframed}
+\scriptsize
+\begin{verbatim}
+Interface              IP-Address      OK? Method Status Protocol 
+GigabitEthernet0/0     10.255.255.245  YES manual up 	     up 
+GigabitEthernet0/1     10.255.255.249  YES manual up        up 
+GigabitEthernet0/2     10.10.10.1      YES manual up        up 
+Serial0/0/0            64.100.100.1    YES manual up        up 
+Serial0/0/1            unassigned      YES unset  up        up 
+Serial0/0/1.1          64.100.200.2    YES manual up        up 
+Vlan1                  unassigned      YES unset
+administratively down down
+\end{verbatim}
+\normalsize
+\end{mdframed}
+
+I then ran  show interfaces
+\begin{mdframed}
+\scriptsize
+\begin{verbatim}
+GigabitEthernet0/0 is up, line protocol is up (connected)
+Hardware is CN Gigabit Ethernet, address is 
+0001.969a.1d01 (bia 0001.969a.1d01)
+Internet address is 10.255.255.245/30
+MTU 1500 bytes, BW 1000000 Kbit, DLY 10 usec,
+reliability 255/255, txload 1/255, rxload 1/255
+Encapsulation ARPA, loopback not set
+Keepalive set (10 sec)
+Full-duplex, 100Mb/s, media type is RJ45
+output flow-control is unsupported, input flow-control is unsupported
+ARP type: ARPA, ARP Timeout 04:00:00, 
+Last input 00:00:08, output 00:00:05, output hang never
+Last clearing of "show interface" counters never
+Input queue: 0/75/0 (size/max/drops); Total output drops: 0
+Queueing strategy: fifo
+Output queue :0/40 (size/max)
+5 minute input rate 63 bits/sec, 0 packets/sec
+5 minute output rate 65 bits/sec, 0 packets/sec
+241 packets input, 16664 bytes, 0 no buffer
+Received 0 broadcasts, 0 runts, 0 giants, 0 throttles
+0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored, 0 abort
+0 watchdog, 1017 multicast, 0 pause input
+0 input packets with dribble condition detected
+
+\end{verbatim}
+\normalsize
+\end{mdframed}
+
+I then ran show running-config
+\begin{mdframed}
+\scriptsize
+\begin{verbatim}
+Building configuration...
+
+Current configuration : 2258 bytes
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+hostname R2
+enable secret 5 $1$mERr$9cTjUIEqNGurQiFU.ZeCi1
+ip cef
+no ipv6 cef
+username Tier3a password 0 cisco
+username administrator password 0 cisco
+license udi pid CISCO2911/K9 sn FTX15249169
+ip ssh version 2
+ip domain-name Central
+ip host R1 10.255.255.254 10.255.255.246 10.2.0.1 
+ip host R3 10.255.255.253 10.255.255.250 10.3.0.1 
+spanning-tree mode pvst
+interface GigabitEthernet0/0
+ ip address 10.255.255.245 255.255.255.252
+ ip ospf priority 255
+ duplex auto
+ speed auto
+interface GigabitEthernet0/1
+ ip address 10.255.255.249 255.255.255.252
+ ip ospf priority 255
+ duplex auto
+ speed auto
+interface GigabitEthernet0/2
+ ip address 10.10.10.1 255.255.255.0
+ duplex auto
+ speed auto
+interface Serial0/0/0
+ ip address 64.100.100.1 255.255.255.252
+ encapsulation ppp
+ ppp authentication pap
+ ppp pap sent-username R2 password 0 cisco
+interface Serial0/0/1
+ no ip address
+ encapsulation frame-relay
+ clock rate 2000000
+interface Serial0/0/1.1 point-to-point
+ ip address 64.100.200.2 255.255.255.252
+ frame-relay interface-dlci 202
+ clock rate 2000000
+interface Vlan1
+ no ip address
+ shutdown
+router ospf 1
+ log-adjacency-changes
+ passive-interface Serial0/0/0
+ passive-interface Serial0/0/1
+ network 10.255.255.244 0.0.0.3 area 0
+ network 10.255.255.248 0.0.0.3 area 0
+ network 10.10.10.0 0.0.0.255 area 0
+ network 64.100.100.0 0.0.0.3 area 0
+ default-information originate
+ip classless
+ip route 0.0.0.0 0.0.0.0 64.100.100.2 
+ip route 0.0.0.0 0.0.0.0 64.100.200.1 200
+ip flow-export version 9
+ip access-list extended PERMIT_LOCAL
+ permit udp any any eq domain
+ permit tcp any any eq domain
+ permit ip 64.100.200.0 0.0.0.3 any
+ permit ip 64.104.223.0 0.0.0.3 any
+ permit icmp 64.100.200.0 0.0.0.3 any
+ permit icmp 64.104.223.0 0.0.0.3 any
+ permit icmp any any echo-reply
+ deny ip any any
+banner login Username: administrator
+Password: cisco Enable: class
+banner motd Username:administrator
+Password:cisco Enable:class
+line con 0
+line aux 0
+line vty 0
+ login local
+ transport input ssh
+line vty 1 4
+ no login
+end
+
+\end{verbatim}
+\normalsize
+\end{mdframed}
+
+\mysubsection{2}{Filling in part of the table}
+\\ we now have enough information to fill in pieces of the table
+
+\begin{tabbing}
+  interface \= 10.255.255.245 \= 255.255.255.252 \= connecting \= interface\kill
+  R2 \> \> \> connecting \> device\\
+interface \> address \> subnetmask \> name \> interface\\
+G0/0 \> 10.255.255.245 \> 255.255.255.252 \> D1 \> Gi 0/1 \\
+G0/1 \> 10.255.255.249 \> 255.255.255.252 \> D2 \> G 0/1 \\
+G0/2 \> 10.10.10.1 \> 255.255.255.0 \> S3 \> G 0/1
+\end{tabbing}
+
+\newpage
+
+%===================================
+\mysection{Part 2: S3}
+
+\mysubsection{1}{Gathering data}
+I continued to do the same for the rest of the switches and interfaces
+\hfill \break
+\mysubsection{2}{full table}
+\\ here is the completed table
+\begin{tabbing}
+  interface \= 10.255.255.245 \= 255.255.255.252 \= connecting \= interface\kill
+  R2 \> \> \> connecting \> device\\
+interface \> address \> subnetmask \> name \> interface\\
+G0/0 \> 10.255.255.245 \> 255.255.255.252 \> D1 \> Gi 0/1 \\
+G0/1 \> 10.255.255.249 \> 255.255.255.252 \> D2 \> G 0/1 \\
+G0/2 \> 10.10.10.1 \> 255.255.255.0 \> S3 \> G 0/1 \\
+S0/0/0 \> 64.100.100.1 \> 255.255.255.252 \> Internet \> N/A \\
+s0/0/1.1 \> 64.100.200.2 \> 255.255.255.252 \> Intranet \> N/A \\
+S3 \>  \> \> \> \\
+VLAN 1 \> 10.10.10.254 \> 255.255.255.0 \> N/A \> N/A \\
+F0/1 \> N/A \> N/A \> Cent. Srvr \> NIC \\
+G0/1 \> N/A \> N/A \> R2 \> G0/2 \\
+c. srvr \\ 
+NIC \> 10.10.10.2 \> 255.255.255.0 \> S3 \> F0/1 \\
+D1 \> \> \> \> \\
+VLAN2 \> 10.2.0.1 \> 255.255.255.0 \> N/A \> N/A\\
+G0/1 \> 10.255.255.246 \> 255.255.255.252 \> R2 \> G0/0 \\
+G0/2 \> 10.255.255.254 \> 255.255.255.252 \> D2 \> G0/2 \\
+F0/23 \> N/A \> N/A \> S2 \> F0/23 \\
+F0/24\> N/A \> N/A \> S1 \> G0/1 \\
+S1 \> \> \> \> \\
+VLAN2 \> 10.2.0.2 \> 255.255.255.0 \> N/A \> N/A \\
+F0/23 \> N/A \> N/A \> D2 \> F0/23 \\
+G0/1 \> N/A \> N/A \> D1 \> F0/24 \\
+D2 \> \> \> \> \\
+F0/23 \> N/A \> N/A \> S1 \> F0/23 \\
+F0/24 \> 10.3.0.1 \> 255.255.255.0 \> S3 \> G0/1 \\
+G0/1 \> 10.255.255.250 \> 255.255.255.252 \> R2 \> G0/1 \\
+G0/2 \> 10.255.255.253 \> 255.255.255.252 \> D1 \> G0/2 \\
+S2 \> \> \> \> \\
+VLAN1 \> 10.3.0.1 \> 255.255.255.0 \> N/A \> N/A \\
+F0/23 \> N/A \> N/A \> D1 \> F0/23 \\
+G0/1 \> N/A \> N/A \> D2 \> F0/24 
+\end{tabbing}
+
+\end{document}
+

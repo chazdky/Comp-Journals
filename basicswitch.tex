@@ -1,0 +1,37 @@
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+basic switch commands for lab
+\begin{itemize}
+  \item{S1(config)#} vlan 99 
+
+  \item{S1(config)#} int vlan 99
+  \item{S1(config-if)#} ipv6 address 2001:db8:acad::2/64
+  \item{S1(config-if)#} ipv6 address fe80::2 link-local
+
+  \item{S1(config)#} int f0/6
+  \item{S1(config-if)#} switchport access vlan 99
+
+  \item{S1(config)#} int range f0/1-24, g0/1-2
+  \item{S1(config-if-range)#} switchport access vlan 99
+
+  \item{S1(config-if)#} mac address-table static 0050.56be.6c89 vlan 99
+    interface f0/6
+
+  \item{S1(config)#} 
+  \item{S1(config)#} 
+  \item{S1(config)#} 
+  \item{S1(config)#} 
+\end{itemize}
+concepts and advanced commands
+\begin{itemize}
+  \item{disable} disables config so we can reset it
+  \item{sdm prefer dual-ipv4-and-ipv6} to set the switch up for dual addressing 
+  \item{do copy run start} save the configuration as the startup template 
+  \item{do reload} reloads and resets the new config in the switch
+\end{itemize} 
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+

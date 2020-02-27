@@ -1,0 +1,121 @@
+\documentclass[../CIT288SecurityResearchNotebook.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter[Research Ch. 06]{Research\linebreak[1] Chapter 06 \hspace*{\fill}{\date}}
+\noindent\textbf{{Networking Security} \hspace*{\fill}{\textbf{CIT 288}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+%===================================
+
+%===========================================
+\mysection{Briefly describe the four generations of anti-virus software}
+Anti-virus: The computer software that is used to avoid, catch, and eliminate malicious software is known as anti-virus
+\begin{itemize}
+	\item{\bf{Four generations:}}
+	\subitem{\bf{first generation avs}} is required to have "simple scanners" to determine the malware
+		\subitem{\bf{second gen avs}} is required to have "heuristic scanners" to search for possible malware occassion using heuristic rules or needs an "integrity checking" to determine changed files
+		\subitem{\bf{third gen avs}} is required to have "activity traps" in an infected program to determine malware by its measures rather than its structure.
+		\subitem{\bf{fourth gen avs}} is required to have "Full Featured Protection" This full featured protection uses a collection of anti-virus techniques packages used in conjunction with activity trap components and scanning.
+\end{itemize}
+
+%=========================
+\mysection{Describe some malware countermeasure elements.}
+\begin{itemize}
+\item{\bf{Prevention}} this measure prevents Mal ware from getting into the system or blocking its capability to change the system through policy, awareness, susceptibility, mitigation, and threat detection
+\item{\bf{Detection}} the measure determines the positions of the Mal ware
+\item{\bf{Identification}} detects the specific malware that has infected the system
+\item{\bf{Removal}} removes all elements of malware virus from every infected system so it cannot propagate further.
+\end{itemize}
+
+%=========================
+\mysection{What is the difference between a backdoor, a bot, a keylogger, spyware, and a rootkit? Can they all be present in the same malware?}
+
+\begin{itemize}
+\item{\bf{Backdoor}} it is a secret admission point into a system or program that permits an important person who is concious of the backdoor to get access without going through the common security access procedures
+\item{\bf{Rootkit}} collection of programs implemented on a system to sustain secret access
+	to that system with administrator rights, while hiding proof of its presence to the most extent possible
+\item{\bf{Bot}} a threat to the network resources and computational of the infected system for use and it is done by the attacker
+\item{\bf{Keylogger}} software which records every keystroke on the infected machine to permit an attacker to observe responsive information especially the information that contains the login and password credentials
+\item{\bf{Spyware}} an attack that causes the machine to permit observing of the range of action on the system, observing the history and content of browsing action, dynamically changes the data exchange between the browser and websites
+\end{itemize}
+Yes, all can be present within the same malware.
+
+
+%=========================
+\mysection{What is "Ransomware"?}
+A type of malicious software designed to block access to a computer system until a sum
+of money is paid. Files are encrypted. Like an RSA encryption, where the attacker has
+the unencryption key and until paid you are locked out.
+
+
+%=========================
+\mysection{What means can a worm use to access remote systems to propagate?} 
+The mechanisms that worm can use to spread:
+\begin{itemize}
+	\item{Email or instant messenger} 
+	\item{File sharing} 
+	\item{Remote execution capability} 
+	\item{Remote file access or transfer capability} 
+	\item{Remote login capability} 
+\end{itemize}
+
+
+%=========================
+\mysection{Assume you have found a USB memory \\stick in your work parking area.}
+{\bf{What threats might this pose to your work computer should you just plug the memory stick in and examine its contents? In particular, consider whether each of the malware propagation mechanisms we discuss could use such a memory stick for transport. What steps could you take to mitigate these threats, and safely determine the contents of the memory stick? }}
+
+
+When a memory stick is plugged into the computer which was found in the 
+parking area may create a variety of threats to the confidentiality, 
+integrity, and availability of the system 
+\\**The memory stick may transmit an "executable virus" or "macro virus" on to the system**
+\\{\bf{Executable virus}} - Executable program files are affected by machine executable virus and these program files work with specific operating system and in some cases it is based upon the hardware platform.
+\\{\bf{Macro virus}} - Files with macro or scripting code are affected by macro viruses and its support effective content in a field of user document types and is translated by an application
+\\**The memory stick may transmit a "malicious worm"**
+\\{\bf{Worm}} - While viewing the memory stick, worm runs automatically and infects other appropriate files as a virus on the system
+\\**The memory stick may contain a trojan horse**
+\\{\bf{Trojan horse}} - malicious piece of code that is delivered through the mail or web page or through the USB drives that causes damage to the data or system
+
+
+	\begin{center}
+\item{{\bf{Steps to mitigate the problem:}}}
+	\end{center}
+\begin{itemize}
+\item{the user should scan the memory stick with appropriate up-to-date avs} 
+\item{the user could check the memory stick in a controlled environment.} 
+	\subitem{for example a live boot linux or emulation environment} 
+\end{itemize}
+
+\clearpage
+
+%=========================
+\mysection{Consider the following fragment: } 
+\begin{mdframed}
+\begin{verbatim}
+legitimate code
+if data is Friday the 13th;
+crash_computer();
+legitimate code
+\end{verbatim}
+\end{mdframed}
+{\bf{What type of malware is this?}}
+
+
+\noindent The type of malware being used is a logic bomb, which is a key part of data corrupting malware.
+\begin{itemize}
+\item{It is code inserted in malware that is placed to "explode" when certain actions are met} 
+\item{The actions take place in the given fragment, it checks the data with appropriate day and date that is Friday the 13th} 
+\item{If the condition is met it calls the function crash\_computer()} 
+\item{For a logic bomb, the example conditions hat can be used as triggers are as follows} 
+\item{The presence or absence of devices or files on the system} 
+\item{An appropriate date or day of the week} 
+\item{Software with appropriate version or configuration} 
+\item{The application executed by the appropriate user} 
+\item{Once activated, a bomb may change or delete data or complete files, or other damage} 
+\end{itemize}
+
+%===========================================
+\end{document}

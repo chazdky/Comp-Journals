@@ -1,0 +1,104 @@
+\documentclass[../CIT288SecurityResearchNotebook.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter[Research Ch. 02]{Research\linebreak[1] Chapter 02 \hspace*{\fill}{\date}}
+\noindent\textbf{{Network Security} \hspace*{\fill}{\textbf{CIT 288}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+%===================================
+
+\mysection{What are the essential ingredients of a symmetric cipher?}
+
+\begin{itemize}
+	\item plain text
+	\item Encryption Algorithm
+	\item Secret Key
+	\item Cipher Text
+	\item Decryption Algorithm
+\end{itemize}
+
+\mysection{How many keys are required for two people to communicate via a symmetric cipher?}
+
+ 1, the same key thats used to encrypt the message is used to decrypt the message
+
+\mysection{What are two principal requirements for the secure use of symmetric encryption?}
+
+\begin{itemize}
+	\item A strong encryption algorithm. The opponent should be unable to decrypt ciphertext or discover the key even if he or
+	she is in possession.
+	\item Sender and receiver must have obtained copies of the secret key in a secure fashion and must keep the key secure
+\end{itemize}
+
+\mysection{List three approaches to message authentication}
+
+\begin{itemize}
+	\item Using conventional encryption
+	\item Using Public-key encryption
+	\item Using a secret value
+\end{itemize}
+
+\mysection{What is message authentication?}
+
+small block of data, that is appended to a message to assure that the sender is authentic and that the message is
+	unaltered.
+
+\mysection{Briefly describe the three schemes found in figure 2.3}
+
+\begin{itemize}
+	\item A
+	\item B
+	\item C
+\end{itemize}
+
+\mysection{What properties must a hash function have to be useful for message authentication?}
+
+\begin{itemize}
+	\item Plain text
+	\item Encryption Algorithm
+	\item Public and Private keys
+	\item Cipher text
+\end{itemize}
+
+\mysection{List and briefly describe three uses of a public-key cryptosystem}
+
+\begin{itemize}
+	\item Encryption/Decryption: The sender encrypts a message with the recipients public key.
+	\item Digital Signature: The sender ``signs'' a message with its private key.
+	\item Key Exchange: Two sides cooperate to exchange as a session key. Several different approaches are possible, involving
+	the private keys of one or both parties.
+\end{itemize}
+
+\mysection{What is the difference between a private key and a secret key?}
+
+The key used in conventional encryption is typically referred to as a secret key. the two keys used for public-key
+	encryption are referred to as the public key and the private key.
+
+\mysection{What is a digital signature?}
+
+A mechanism for authenticating a message. Bob uses a secure hash function, sch as SHA-512, to generate a hash value
+	for the message and then encrypts the hash code with his private key, creating a digital signature. Bob sends the
+	message with the signature attached. When Alice receives the message she calculates a hash value for the message,
+	decrypts the signature using Bob's public key and compares it to Bob's hash value. If the two hash values match,
+	Alice is assured that the message must have been signed by Bob. It is important to emphasize that the digital
+	signature does not provide confidentiality.
+
+\mysection{What is public-key certificate?}
+
+A certificate consists of a public-key plus a user ID of the key owner, with the whole block signed by a trusted
+	third-party (= certificate authority CA) The user can then publish the certificate and anyone needing the users
+	public-key can obtain the certificate and verify that it is valid by means of the attached signature.
+
+\mysection{How can public-key encryption be used to distribute a secret key?}
+
+\begin{itemize}
+	\item Digital Envelope
+	\item Prepare a message
+	\item Generate a random symmetric key that will be used the time only
+	\item Encrypt that message using symmetric key encryption with the one-time key. 
+	\item Encrypt the one-time key using public-key encryption
+\end{itemize}
+
+\end{document}

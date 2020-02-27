@@ -1,0 +1,303 @@
+\documentclass[../EngineeringJournal_CDavis.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Configuring \linebreak[1] Static Routes \hspace*{\fill}{2020}}
+\noindent\textbf{{Packet Tracer Labs} \hspace*{\fill}{\textbf{CIT 167}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+\addcontentsline{toc}{chapter}{Useful Commands: Static Routing}
+%===================================
+%===================================
+
+%===================================
+\mysection{\textbf{Configuring Static Routes }}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+  \begin{outline}
+    \1 There are two common types of static routes in the routing table:
+      \2 Static route to a specific network
+      \2 Default static route
+  \end{outline}
+\end{tcolorbox}
+\hspace{0.2cm}
+
+%===================================
+\mysection{\textbf{IPv4 Routing}}
+
+% \item{show ip route [ip-address]} to display the current state of the routing table
+%   \subitem{command can be used in EXEC or privileged EXEC mode}
+% \item{show arp} To display the 
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+\begin{verbatim}
+
+ip route <network-address> <subnet-mask> { next-hop-ip | exit-intf }
+
+- Next-hop-ip: IP-address of the connecting router to use for forwarding.
+- Exit-intf: the outgoing interface to use to forward the packet to the next hop.
+
+\end{verbatim}
+\normalsize
+\end{tcolorbox}
+\hspace{0.2cm}
+
+
+
+
+%===================================
+\mysection{\textbf{Configure a IPv4 Default Static Route}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+\begin{verbatim}
+
+ip route 0.0.0.0 0.0.0.0 { exit-intf | next-hop-ip }
+
+
+\end{verbatim}
+\normalsize
+The distance parameter is used to create a floating static route by setting an administrative distance that is higher than a dynamically learned route.
+\end{tcolorbox}
+\hspace{0.2cm}
+
+%===================================
+\mysection{\textbf{Configure an IPv4 Floating Static Route}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+  - Given an example where R1 is attached to R2 (172.16.2.2) and R3 (10.10.10.2), the following would create a default static route to R2, and a floating static route to R3:
+\scriptsize
+\begin{verbatim}
+
+ip route 0.0.0.0 0.0.0.0 172.16.2.2     # Default route to R2
+ip route 0.0.0.0 0.0.0.0 10.10.10.2 5   # Floating default route to R3
+
+\end{verbatim}
+\normalsize
+\begin{outline}
+
+\1 Default route to R2 has no administrative distance specified, so would default to 1. This is the preferred route..
+\1 Floating default route to R3 has administrative distance 5. Since this value is greater that of the default route, this route "floats" - it is not present in the routing table unless the preferred route fails.
+
+\end{outline}
+\end{tcolorbox}
+\hspace{0.2cm}
+
+%===================================
+\mysection{\textbf{Default Administrative Distances}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+\begin{verbatim}
+
+Connected                   0
+Static                      1
+EIGRP summary route         5
+External BGP                20
+Internal EIGRP              90
+IGRP                        100
+OSPF                        110
+IS-IS                       115
+RIP                         120
+External EIGRP              170
+Internal BGP                200
+
+\end{verbatim}
+\normalsize
+\end{tcolorbox}
+\hspace{0.2cm}
+
+%===================================
+\mysection{\textbf{Verify a Static Route}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+\begin{verbatim}
+
+show ip route
+show ip route static                  # Displays contents of static routes
+show ip route static | begin Gateway
+show ip route <network>
+
+
+show running-config | section ip route
+
+# displays the routes that packets will actually take when traveling to their
+destination
+traceroute <ip-address>
+trace <destination>
+
+#displays detailed info about neighboring devices descovered using Cisco Discovery
+Protocol
+show cdp neighbors
+show cdp neighbors detail
+
+\end{verbatim}
+\normalsize
+\end{tcolorbox}
+\hspace{0.2cm}
+
+%===================================
+\mysection{\textbf{Command Sequence}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+\begin{verbatim}
+
+enable
+configure terminal
+
+ip route 192.168.3.0 255.255.255.0 192.168.2.2
+exit
+
+show ip route
+ping 192.168.3.1
+trace 192.168.3.1
+
+exit
+
+\end{verbatim}
+\normalsize
+\end{tcolorbox}
+\hspace{0.2cm}
+
+%===================================
+\mysection{\textbf{IPv6 Routing}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+\begin{verbatim}
+
+ipv6 route <ipv6-prefix>/<prefixlength> {ipv6-address | exit-intf}
+
+
+\end{verbatim}
+\normalsize
+\end{tcolorbox}
+\hspace{0.2cm}
+
+%===================================
+\mysection{\textbf{Displaying and Testing IPv6 Routes}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+\begin{verbatim}
+
+show ipv6 route
+show ipv6 route static
+show ipv6 route <network>
+show running-config | section ipv6 route
+
+ping ipv6 <ipv6-address>
+traceroute
+
+\end{verbatim}
+\normalsize
+\end{tcolorbox}
+\hspace{0.2cm}
+
+%===================================
+\mysection{\textbf{Configure a Directly Connected Static IPv6 Route}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+\begin{verbatim}
+
+ipv6 route <ipv6-address>/<network-prefix> <interface>
+ipv6 route 2001:db8:acad:2::/64 s0/0/0
+
+\end{verbatim}
+\normalsize
+\end{tcolorbox}
+\hspace{0.2cm}
+
+%===================================
+\mysection{\textbf{Configure a Fully Specified Static IPv6 Route}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+\begin{verbatim}
+
+ipv6 route <ipv6-address>/<network-prefix> <interface> <next-hop ipv6-address>
+ipv6 route 2001:db8:acad:2::/64 s0/0/0 fe80::2
+
+\end{verbatim}
+\normalsize
+\end{tcolorbox}
+\hspace{0.2cm}
+
+%===================================
+\mysection{\textbf{Configure a Default IPv6 Static Route}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+\begin{verbatim}
+
+ipv6 route ::/0 {ipv6-address | exit-intf}
+ipv6 route ::/ 2001:db8:acad:4::2
+
+\end{verbatim}
+\normalsize
+\end{tcolorbox}
+\hspace{0.2cm}
+
+%===================================
+\mysection{\textbf{Configure an IPv6 Floating Static Route}}
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+\begin{verbatim}
+
+ipv6 route ::/0 <ipv6-address> <administrative-distance>
+ipv6 route ::/0 2001:db8:aad:4::2
+ipv6 route ::/0 2001:db8:aad:6::2 5
+
+
+\end{verbatim}
+\normalsize
+\end{tcolorbox}
+\hspace{0.2cm}
+
+%===================================
+\mysection{\textbf{Common IOS Troubleshooting Commands}}
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize
+\begin{verbatim}
+
+ping
+ping <ip-address> source <source_ip>
+traceroute <ip-address>
+show ip route | begin Gateway
+show ip interface brief
+show cdp neighbors detail
+
+
+\end{verbatim}
+\normalsize
+\end{tcolorbox}
+\hspace{0.2cm}
+
+\newpage
+
+%===================================
+
+\end{document}

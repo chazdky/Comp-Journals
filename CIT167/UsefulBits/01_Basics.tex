@@ -1,0 +1,201 @@
+\documentclass[../EngineeringJournal_CDavis.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Useful Bits: \linebreak[1]Basics \hspace*{\fill}{2020}}
+\noindent\textbf{{Packet Tracer Labs} \hspace*{\fill}{\textbf{CIT 167}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+\addcontentsline{toc}{chapter}{Useful Bits: Basics}
+
+%===================================
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+\begin{verbatim}
+User can interact with a shell with a CLI or a GUI.
+
+Cisco IOS is used for cisco devices
+
+The most common way to configure a HOME router is with a web broswer
+
+Methods to access the CLI environment:
+	-Console : Physical management port that provides out of band access, 
+		  works even without connectivity
+	-SSH : Secure CLI connection, requires active networking services
+	-Telnet: Like SSH but insecure because everything is sent in cleartext
+
+Some devices also support a legacy AUX port used to establish remote CLI session using a modem.
+	It works similarly to console connection.
+
+Some useful terminal emulators via SSH/Telnet:
+	-PuTTY
+	-Tera term
+	-OS X terminal
+	-SecureCRT
+
+For security Cisco IOS separates management access into two modes:
+	-User EXEC mode: Limited capabilities but useful for basic operations and monitoring,
+			 Doesn't allow change to configurations
+			 CLI prompt ends with a >
+			 referred as 'view-only' mode
+	
+	-Privileged EXEC mode: Higher configuration modes can only be accessed this mode
+			       CLI prompt ends with a #
+				
+
+To configure the device the user must enter Global configuration mode:
+	- it is identified by a command prompt that ends with (config)#
+	- changes here affect the device as a whole
+	- from here you can access more specifi sub-configuration mode for specific function of the IOS device:
+		Two common subs are:
+			-Line configuration Mode: (config-line)#
+			-Interface configuration Mode: (config-if)#
+
+
+If you type 'enable' on command line you go from user EXEC to privileged EXEC mode
+If you type 'disable' on command line you return to the user EXEC mode
+
+From privileged EXEC mode if i type 'configure terminal' i go to Global configuration mode
+To return to privileged EXEC mode type 'exit'
+\end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+\begin{verbatim}
+From Global configuration mode if i type 'interface <interface-name> <interface-number' 
+	  i get to the specific interface configuration
+for the specified interface, the same for line 'line <line-name> <line-number>'.
+	You don't need to return to global configuration mode to switch between sub-configurations.
+To return to Global Configuration mode (from sub-configuration) type 'exit'.
+To return directly to Privileged exec mode type 'end' or press 'Ctrl+Z'
+
+The general command syntax is the command followed by keywords and arguments:
+	-Keyword : a specific parameter defined in the operating system
+	-Argument: not predefined, a variable or value user-defined.
+
+Convention:
+	boldface: commands and literals that you enter as shown
+	italics: arguments for which you suplly values
+	[x] : Optional element
+	{x} : Required element
+	[x {y | z}]: Required choice within an optional argument
+
+IOS helps:
+	-Context-sensitive help:
+		Helps you find quickly which command are available in each command mode
+		To access it type '?' at the CLI
+		It can even be used to check what parameters a particular command accept 
+			or to finish the name of a command.
+	Command syntax check:
+		If a command is entered wrong, the CLI provides the user a feedback about what is wrong.
+\end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+  \href{http://etherealmind.com/cisco-ios-cli-shortcuts}{Cisco IOS shortcuts} 
+\scriptsize 
+\begin{verbatim}
+IMPORTANT SHORTCUTS : Ctrl-Shift-6 To abort a command mid-stream 
+			  (Useful for mistyped commands and cisco IOS attempting translate it with DNS)
+		      Ctrl+R refresh last command (example if an output of a interface down/up 
+			    shows in the middle of typing a command)
+
+Hostnames:
+	-Case sensitive
+	-to change hostname use the command 'hostname <hostname>' in Global Config Mode
+	-to reset default hostname use the command 'no hostname' in Global Config Mode
+
+Passwords:
+	-use 'enable secret <password>' in Global Config Mode to set password for Privileged Exec Mode
+	-to set a password in user EXEC mode, type 'password <password>' in line console configuration mode 
+		('line console 0' global config command)
+
+	 next enable user login with the 'login' command
+	-to set a password for VTY (Virtual terminal) lines used for SSH and Telnet enter line VTY config mode 
+		with 'line vty 0 15' (if 16 vty lines)
+	 next set password with 'password <password>' and enable login with 'login'
+	-To encrypt passwords:
+		Use command 'service password-encryption', this applies only to configuration files
+
+To check the config for encryption run 'show running-config'
+
+To add a banner message of the day use 'banner motd # the message of the day # '
+
+There are two types of config:
+	-startup config ,stored in NVRAM, to view it use 'show startup-config'
+	-running config ,stored in RAM
+To save changes made to the running config in the startup config do 'copy running-config startup-config'
+To restore the startup config run in privileged EXEC mode 'reload'
+If unwanted changes were made to the startup config file it is 
+      possible to remove it by using 'erase startup-config'
+\end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+\begin{verbatim}
+Types of network media include twisted-pair copper cables, 
+			      fiber-optic cables, 
+			      coaxial cables, 
+			      or wireless as shown in the figure. 
+
+Difference between them:
+
+    Distance the media can successfully carry a signal
+
+    Environment in which the media is to be installed
+
+    Amount of data and the speed at which it must be transmitted
+
+    Cost of the media and installation
+\end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+\begin{verbatim}
+Cisco IOS Layer 2 switches have physical ports for devices to connect. 
+These ports do not support Layer 3 IP addresses. 
+Therefore, switches have one or more switch virtual interfaces (SVIs)
+
+IP address information can be added:
+	-manually
+	-using DHCP
+
+To configure SVI use 'interface vlan 1' in global config mode.
+Assign an ip address using 'ip address <ip-address> <subnet-mask>'
+Enable the inteface using 'no shutdown'
+
+To see a brief interface ip screen : 'show ip inteface brief'
+
+To test the connectivity of a device on a network 
+or of a website use the command 'ping <ip-address>'
+
+\end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\newpage
+
+%===================================
+
+\end{document}

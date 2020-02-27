@@ -1,0 +1,87 @@
+\documentclass[../EngineeringJournal_CDavis.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Static \linebreak[1] Routing \hspace*{\fill}{2020}}
+\noindent\textbf{{Packet Tracer Labs} \hspace*{\fill}{\textbf{CIT 167}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+\addcontentsline{toc}{chapter}{Useful Bits: Static Routing}
+%===================================
+%===================================
+
+
+%===================================
+\mysection{\textbf{Important Concepts for Static Routing}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+  \begin{itemize}
+    \item{Routing} is the process of selecting paths in a network along which to send
+      network traffic
+    \item{Static routing} involves manual updating of routing tables with fixed paths to destination networks.
+    \item{Static routing uses include:}
+    \subitem{} Defining an exit point from a router when no other routes are available or necessary.
+    \subitem{} Small networks that require only one or two routes.
+    \subitem{}To provide a failsafe backup in the event that a dynamic route is unavailable.
+    \subitem{}To help transfer routing information from one routing protocol to another.
+  \item{Static routing disadvantages include:}
+    \subitem{}Potential for human error
+    \subitem{}Lack of fault tolerance
+    \subitem{}Default prioritization over dynamic routing
+    \subitem{}Administrative overhead
+  \item{To display the current state of the routing table} use the show ip route command in user EXEC or privileged EXEC mode.
+  \item{To display the entries in the Address Resolution Protocol (ARP) table} use the show arp command in user EXEC or privileged EXEC mode.
+  \item{To establish static routes} use the ip route command in global configuration mode. To remove static routes, use the no form of this command.
+  \item{To discover the routes that packets will actually take} when traveling to their destination, use the trace / traceroute privileged EXEC command.
+  \item{To display detailed information about neighboring devices} discovered using Cisco Discovery Protocol (CDP), use the show cdp neighbors privileged EXEC command.
+  \end{itemize}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\newpage
+
+%===================================
+
+%===================================
+\mysection{\textbf{Important Terms to know}}
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+\begin{itemize}
+  \item{ARP table}
+    \subitem{}A table of IP and hardware addresses resolved using the Address Resolution Protocol.
+  \item{Cisco Express Forwarding (CEF)}
+    \subitem{}An advanced layer 3 switching technology used mainly in large core
+    networks or the Internet to enhance the overall network performance.
+  \item{Internet Control Message Protocol (ICMP)}
+    \subitem{}Used by network devices to send error messages on an IP network.
+  \item{Layer 3 switch}
+    \subitem{}A device capable of both routing and switching operations using dedicated application-specific integrated circuit (ASIC) hardware.
+  \item{next-hop router}
+    \subitem{}The next router in the path between source and destination.[20]
+  \item{outgoing interface}
+    \subitem{}The local network interface used to connect to a next-hop router.
+  \item{routing table}
+    \subitem{}A data table stored in a router or a networked computer that lists the routes to particular network destinations, and in some cases, metrics (distances) associated with those routes.
+  \item{static route}
+    \subitem{}A manually-configured routing entry.
+  \item{summary route}
+    \subitem{}A route containing the highest-order bits that match all addresses for a given collection of destination networks.
+  \item{traceroute}
+    \subitem{}A computer network diagnostic tool for displaying the route (path) and measuring transit delays of packets across an Internet Protocol (IP) network.
+\end{itemize}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+%===================================
+\end{document}
+
