@@ -1,0 +1,163 @@
+\documentclass{report}
+
+\usepackage{textcomp}
+\usepackage[demo]{graphicx}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{outlines}
+%===================================
+\newcommand{\classinfo}{{\bf Research \\ Chapter 08}\\{\it CIT 288}\\{Chaz Davis}}
+\newcommand{\semester}{BCTC \\ Spring 2020}
+%===================================
+\newcommand{\mysection}[1]{\section*{#1}}
+\newcommand{\mysubsection}[2]{\textbf{\romannumeral #1) #2}}
+%===================================
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{ \fancyplain{}{Chaz Davis} }
+\rhead{ \fancyplain{}{\today} }
+\cfoot{ \fancyplain{}{\thepage} }
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%===================================
+\title{\classinfo}
+\author{\semester}
+\date{\today}
+
+%===================================
+
+\begin{document}
+
+\maketitle
+
+%===================================
+\mysection{\textbf{Chapter 08}}
+
+\mysubsection{1}{List and briefly define four classes of intruders.}
+
+\begin{itemize}
+  \item{Cyber criminals:}  Are either individuals or members of an organized crime group with a 
+    goal of financial reward.
+  \item{ Activists:} Are either individuals, usually working as insiders, or members of a larger 
+    group of outsider attackers, who are motivated by social or political causes.
+  \item{ State-sponsored organizations:} Are groups of hackers sponsored by governments to conduct 
+    espionage or sabotage activities.
+  \item{Others:} Are hackers with motivations other than those listed above, including classic 
+    hackers or crackers who are motivated by technical challenge or by peer-group esteem and 
+    reputation.Many of those responsible for discovering new categories of buffer overflow 
+    vulnerabilities could be regarded as members of this class
+\end{itemize}
+
+
+\noindent\mysubsection{2}{List and briefly describe the steps typically used by intruders when attacking a system.}
+\begin{itemize}
+  \item{1} Target acquisition and info gathering
+  \item{2} Initial Access
+  \item{3} Privilege escalation
+  \item{4} Information gathering and/or system exploit
+  \item{5} Maintaining access
+  \item{6} Covering tracks
+\end{itemize}
+
+\noindent\mysubsection{3}{Describe the three logical components of an IDS.}
+\begin{itemize}
+  \item{Target Acquisition and info gathering} using scam websites to gain
+    access to valuable information.
+  \item{Initial Access} when the hacker succeeds in guessing passwords
+    and other valuable information
+  \item{Privilege Escalation} When the attackers have the control
+    to adjust privileges
+  \item{Information Gathering and/or System Exploit} when the attackers
+    have the ability to modify files inside a target's system
+  \item{Maintaining Access} when the attackers plant a backdoor or other
+    malware to assure that they have access over time
+  \item{Covering Tracks} editing log files so the target won't notice any
+    changes
+\end{itemize}
+
+\noindent\mysubsection{4}{Describe the differences between a host-based IDS and a network-based IDS. How can their advantages be combined into a single system?}
+\begin{itemize}
+  \item{Sensor} it has responsibility in collecting data; input includes
+    network packets, log files, system call traces.
+  \item{Analyzer} receiving input from one or more sensors, responsible for
+    determining if an intrusion has occurred. Te output of this component is
+    an indication that an intrusion has occurred and may include evidence
+    supporting the conclusion that an intrusion has occurred.
+  \item{User Interface} it enables user to view the output of the system, or
+    control the system behavior.
+\end{itemize}
+
+\noindent\mysubsection{5}{Explain the base-rate fallacy.}
+\begin{itemize}
+  \item{Host based IDS} monitors the characteristics of a single host and the
+    events occurring within that host for suspicious activity.
+  \item{Network-Based IDS} Monitors network traffic for a particular network
+    segments and analyzes network, transport, and application protocols to
+    identify suspicious activity.
+\end{itemize}
+
+
+\noindent\mysubsection{6}{What is the difference between anomaly detection and signature or heuristic intrusion detection?}
+\begin{itemize}
+  \item{Anomaly Detection} Involves the collextion of data relating to the
+    behavior of legitamate users over a period of time. Then, current observed
+    behavior is analyzed to determine with a high level of confidence whether
+    this behavior is that of legitamate user or alternatively that of an
+    intruder.
+  \item{Signature or Heuristic detection} Uses a set of know malicious data
+    patterns (signatures) or attack rules (heuristics) that are compared with
+    current data behavior to decide if it is that of an intruder. it is also
+    known as misuse detection. This approach can only identify known attacks
+    for which it has patterns or rules.
+\end{itemize}
+
+
+\noindent\mysubsection{7}{What is the difference between signature detection and rule-based heuristic identification?}
+
+
+In essence, anomaly approaches aim to define normal, or expected, behavior,
+in order to identify malicious or unauthorized behavior. They can quickly and
+efficiently identify known attacks. However, only anomaly detection is able to
+detect unknown, zero-day attacks, as it starts with known good behavior and
+identifies anoalies to it. Given this advantage, clearly anomaly detection
+would be the proferred approach, were it not for the difficulty in collecting
+and analying the data required, and the high level of false alarms.
+
+
+\noindent\mysubsection{8}{What advantages do a Distributed HIDS provide over a single system HIDS?}
+
+
+Traditionally, work on host-based IDSs focused on single-system stand alone
+operaton. The typical organization, however, needs to defend a distributed
+collection of hosts supported by a LAN or internetwork. Although it is possible
+to mount a defense by using stand-alone IDSs on each host, a more effective
+defense can be acheived by coordination and cooperation among IDSs across the
+network.
+
+
+\noindent\mysubsection{9}{What are possible locations for NIDS sensors?}
+\begin{itemize}
+  \item{Between the external Firewall and the internet} 
+  \item{Just inside the external firwall} 
+  \item{Inside internal Firewalls} 
+    \subitem{-}{between desktops/networks and internal firewall} 
+    \subitem{-}{between internal firewalls and servers and data resources}  
+\end{itemize}
+
+
+\noindent\mysubsection{10}{What is a honeypot?}
+\\Honeypots are resources that have no production value. There is no legitimate
+reason for anyone outside the network to interact with a honeypot. Thus, any
+attempt to communicate with the system is most likely a probe, scan, or attack.
+Conversely, if a honeypot initiates outbound communication, the system has
+probably been compromised.
+
+
+
+%===================================
+
+\end{document}

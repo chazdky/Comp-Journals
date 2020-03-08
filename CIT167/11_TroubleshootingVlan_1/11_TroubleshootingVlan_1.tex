@@ -1,0 +1,74 @@
+\documentclass{report}
+
+\usepackage{textcomp}
+\usepackage[demo]{graphicx}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{outlines}
+%===================================
+\newcommand{\classinfo}{{\bf Troubleshooting \\ Vlan Scenario 1}\\{\it CIT 167}\\{Chaz Davis}}
+\newcommand{\semester}{BCTC \\ Spring 2020}
+%===================================
+\newcommand{\mysection}[1]{\section*{#1}}
+\newcommand{\mysubsection}[2]{\textbf{\romannumeral #1) #2}}
+%===================================
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{ \fancyplain{}{Chaz Davis} }
+\rhead{ \fancyplain{}{\today} }
+\cfoot{ \fancyplain{}{\thepage} }
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%===================================
+\title{\classinfo}
+\author{\semester}
+\date{\today}
+
+%===================================
+
+\begin{document}
+
+\maketitle
+
+%===================================
+\mysection{\textbf{Part 1: Test Connectivity between PCs on the Same VLAN}}
+
+\mysubsection{1}{Can PC1 ping PC4}
+\\a
+
+\noindent\mysubsection{2}{Can pc2 ping pc5}
+\\a
+
+\noindent\mysubsection{3}{Can pc3 ping pc6}
+\\a
+
+
+\begin{figure}[!hbt]\centering
+\subfloat[PC1 ping PC4]{\label{Ch11PC1}\includegraphics[width=.45\linewidth]{demo}}\par
+\subfloat[PC2 pinging PC5]{\label{Ch11PC2}\includegraphics[width=.45\linewidth]{demo}}\hfill
+\subfloat[PC3 Pinging PC6]{\label{Ch11PC3}\includegraphics[width=.45\linewidth]{demo}}\par
+\caption{Testing Connections on the same networks}
+\label{Ch11}
+\end{figure}
+
+
+
+
+%===================================
+\mysection{\textbf{Part 2: Investigate Connectivity Problems by Gathering Data}}
+
+\mysubsection{1}{Verify Configurations on the PCs}
+\\I checked configurations for IP address and subnetmasks on all pcs. 
+PC5 had an incorrect IP address. All are now correct.
+
+\noindent\mysubsection{2}{Verify Configs on the Switches}
+\\a
+
+
+%===================================
+
+\end{document}
