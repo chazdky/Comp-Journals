@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}! /usr/bin/bash}
+ping \PYGZhy{}c1 \PYG{l+m}{8}.8.8.8 \PYGZgt{} /dev/null
+\PYG{k}{if} \PYG{o}{[} \PYG{n+nv}{\PYGZdl{}?} \PYGZhy{}eq \PYG{l+m}{0} \PYG{o}{]}
+  \PYG{k}{then}
+    \PYG{n+nb}{echo} \PYG{l+s+s2}{\PYGZdq{}SUCCESS\PYGZdq{}}
+    \PYG{n+nb}{exit} \PYG{l+m}{0}
+  \PYG{k}{else}
+    \PYG{n+nb}{echo} \PYG{l+s+s2}{\PYGZdq{}FAILURE\PYGZdq{}}
+\PYG{k}{fi}
+\end{Verbatim}

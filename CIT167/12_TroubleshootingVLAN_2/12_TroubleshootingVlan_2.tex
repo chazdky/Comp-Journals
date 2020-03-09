@@ -1,0 +1,54 @@
+\documentclass{report}
+
+\usepackage{textcomp}
+\usepackage[demo]{graphicx}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{outlines}
+%===================================
+\newcommand{\classinfo}{{\bf Troubleshooting \\ Vlan Scenario 2}\\{\it CIT 167}\\{Chaz Davis}}
+\newcommand{\semester}{BCTC \\ Spring 2020}
+%===================================
+\newcommand{\mysection}[1]{\section*{#1}}
+\newcommand{\mysubsection}[2]{\textbf{\romannumeral #1) #2}}
+%===================================
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{ \fancyplain{}{Chaz Davis} }
+\rhead{ \fancyplain{}{\today} }
+\cfoot{ \fancyplain{}{\thepage} }
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%===================================
+\title{\classinfo}
+\author{\semester}
+\date{\today}
+
+%===================================
+
+\begin{document}
+
+\maketitle
+
+%===================================
+\mysection{\textbf{Part 1: Discover and Documentation Issues in the Network}}
+
+\begin{table}[!h]
+  \caption{Documentation}
+  \label{tab:Doc12}
+  \begin{tabular}{lp{0.45\linewidth}| lp{0.45\linewidth}p{1in}}
+    \textbf{Problems} & \textbf{Solutions}\\\hline
+    S1 not configured with any vlan & Configure Vlans\\
+    S1 Native vlan 56 & set Native VLAN 56\\
+    S2 g0/1 is an access port not a trunk port & Implement switchport mode trunk command\\
+    s3 ports are not assigned to a VLAN & Implement switchport access vlan\#
+    command based on the Port assignment table\\
+  \end{tabular}
+\end{table}
+%===================================
+
+\end{document}
