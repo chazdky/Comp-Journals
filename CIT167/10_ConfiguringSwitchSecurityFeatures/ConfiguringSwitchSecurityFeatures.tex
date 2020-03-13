@@ -1,38 +1,31 @@
-\documentclass{report}
-
-\usepackage{textcomp}
-\usepackage{graphicx}
-\usepackage{fancyhdr}
-\usepackage{subcaption}
-\usepackage{multicol}
-\usepackage{outlines}
-%===================================
-\newcommand{\classinfo}{{\bf Configuring Switch \\ Security Features}\\{\it CIT
-167}\\{Chaz Davis}}
-\newcommand{\semester}{BCTC \\ Spring 2020}
-%===================================
-\newcommand{\mysection}[1]{\section*{#1}}
-\newcommand{\mysubsection}[2]{\textbf{\romannumeral #1) #2}}
-%===================================
-\setlength{\headheight}{15.2pt}
-\pagestyle{fancy}
-\fancyhf{}
-\lhead{ \fancyplain{}{Chaz Davis} }
-\rhead{ \fancyplain{}{\today} }
-\cfoot{ \fancyplain{}{\thepage} }
-\renewcommand{\headrulewidth}{0.5pt}
-\renewcommand{\footrulewidth}{0pt}
-
-%===================================
-\title{\classinfo}
-\author{\semester}
-\date{\today}
-
-%===================================
+\documentclass[../EngineeringJournal_CDavis.tex]{subfiles}
 
 \begin{document}
 
-\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter[Configuring Switch Security]{Configuring Switch\linebreak[1] 
+Security Features\hspace*{\fill February 26, 2020}}
+\noindent\textbf{{Packet Tracer Lab 10} \hspace*{\fill}{\textbf{CIT 167}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+%===================================
+%===================================
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+Sec features
+  \begin{outline}
+    \1  some thing
+  \end{outline}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+  
+
+\clearpage
 
 %===================================
 \mysection{\textbf{Part 1: The Lab}}
@@ -42,19 +35,19 @@ I created and cabled the network according to the diagram.
 
 
 \noindent\mysubsection{2}{Initialize and reload the router and switch}
-\\I went into router configuration, and checked the flash.
+I went into router configuration, and checked the flash.
 
 
 \noindent\mysubsection{3}{Configure an IP address on PC-A}
-\\I then went to PC-A and setup the IP configuration.
+I then went to PC-A and setup the IP configuration.
 
 \noindent\mysubsection{4}{Configure basic settings on R1}
-\\I went into R1 and entered the commands and then copied the running and
+I went into R1 and entered the commands and then copied the running and
 startup configs.
 
 
 \noindent\mysubsection{5}{Configure basic settings on S1}
-\\I ran the commands from the diagram, setting up basic settings and then
+I ran the commands from the diagram, setting up basic settings and then
 creatings and configuring vlan 99. 
 \\When I issued the {\scriptsize{\verb$show vlan$}\normalsize} command 
 it shows vlan 99 as active.
@@ -93,8 +86,8 @@ we can see vlan 99 as up.
 \\The timeout would be 75 seconds. So, 1 minute and 15 seconds.
 
 
-\subsubection{\bf{a)}}
-\\It was successful, and the prompt said unauthorized access is strictly
+\noindent{\bf{a)}}
+It was successful, and the prompt said unauthorized access is strictly
 prohibited, and the gave the S1 prompt with the octothorpe signifying the admin
 account.
 
@@ -102,7 +95,7 @@ account.
 \noindent\mysubsection{9}{Configure general security features on S1}
 
 
-\subsubection{\bf{a)}}
+\noindent{\bf{b)}}
 
 \begin{figure}[!hbt]\centering
 \includegraphics[width=.75\linewidth]{Figures/2020-02-26-035114_701x102_scrot.png}\par
@@ -110,12 +103,12 @@ account.
 \label{Banner10}
 \end{figure}
 
-\subsubection{\bf{b}}
-\\The physical ports that are open are Fa0/5 and Fa0/6
+\noindent{\bf{c)}}
+The physical ports that are open are Fa0/5 and Fa0/6
 
 
-\subsubection{\bf{c \& d)}}
-\\I ran the commands the output of 
+\noindent{\bf{c \& d)}}
+I ran the commands the output of 
 {\scriptsize{\verb$show ip int brief$}\normalsize} gives us:
 
 
@@ -130,33 +123,33 @@ account.
 \noindent\mysubsection{10}{Configure and verify port security on S1}
 
 
-\subsubection{\bf{a)}}
-\\The macaddress is 0004.9a08.6602
+\noindent{\bf{a)}}
+The macaddress is 0004.9a08.6602
 
 
-\subsubection{\bf{b)}}
-\\fa0/5 has a mac address of 0004.9a08.6602 and fa0/6 doesnt show on the table.
+\noindent{\bf{b)}}
+fa0/5 has a mac address of 0004.9a08.6602 and fa0/6 doesnt show on the table.
 
 
-\subsubection{\bf{c \& d)}}
-\\The port status is {\scriptsize{\verb$Secure-Up$}\normalsize}.
+\noindent{\bf{c \& d)}}
+The port status is {\scriptsize{\verb$Secure-Up$}\normalsize}.
 
 
-\subsubection{\bf{e)}}
-\\From R1 I pinged PC-A as seen in Fig.~\ref{R1ping10}\subref{R1ping10A}.
+\noindent{\bf{e)}}
+From R1 I pinged PC-A as seen in Fig.~\ref{R1ping10}\subref{R1ping10A}.
 
 
-\subsubection{\bf{l)}}
-\\The ping from R1 to PC-A was not successful. 
+\noindent{\bf{l)}}
+The ping from R1 to PC-A was not successful. 
 
 
-\subsubection{\bf{m)}}
-\\See Fig.~\ref{R1ping10}\subref{R1ping10B} for the output of
+\noindent{\bf{m)}}
+See Fig.~\ref{R1ping10}\subref{R1ping10B} for the output of
 {\scriptsize{\verb$show int f0/5$}\normalsize}.
 
 
-\subsubection{\bf{p)}}
-\\This time the ping was successful again. See
+\noindent{\bf{p)}}
+This time the ping was successful again. See
 Fig.~\ref{R1ping10}\subref{R1ping10C}
 
 

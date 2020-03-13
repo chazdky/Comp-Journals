@@ -1,37 +1,31 @@
-\documentclass{report}
-
-\usepackage{textcomp}
-\usepackage{graphicx}
-\usepackage{fancyhdr}
-\usepackage{subcaption}
-\usepackage{multicol}
-\usepackage{outlines}
-%===================================
-\newcommand{\classinfo}{{\bf Legacy Inter-Vlan \\ Implementation}\\{\it CIT 167}\\{Chaz Davis}}
-\newcommand{\semester}{BCTC \\ Spring 2020}
-%===================================
-\newcommand{\mysection}[1]{\section*{#1}}
-\newcommand{\mysubsection}[2]{\textbf{\romannumeral #1) #2}}
-%===================================
-\setlength{\headheight}{15.2pt}
-\pagestyle{fancy}
-\fancyhf{}
-\lhead{ \fancyplain{}{Chaz Davis} }
-\rhead{ \fancyplain{}{\today} }
-\cfoot{ \fancyplain{}{\thepage} }
-\renewcommand{\headrulewidth}{0.5pt}
-\renewcommand{\footrulewidth}{0pt}
-
-%===================================
-\title{\classinfo}
-\author{\semester}
-\date{\today}
-
-%===================================
+\documentclass[../EngineeringJournal_CDavis.tex]{subfiles}
 
 \begin{document}
 
-\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter[Legacy InterVlan Implementation]{Legacy InterVlan\linebreak[1]
+Implementation \hspace*{\fill March 5, 2020}}
+\noindent\textbf{{Packet Tracer Lab 14} \hspace*{\fill}{\textbf{CIT 167}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+%===================================
+%===================================
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+implement
+  \begin{outline}
+    \1 vlans
+    \1 trunks
+  \end{outline}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+  
+\clearpage
 
 %===================================
 \mysection{\textbf{Part 1: Configuring and verifying the network}}

@@ -1,40 +1,30 @@
-\documentclass{report}
-
-\usepackage{textcomp}
-\usepackage{graphicx}
-\usepackage{fancyhdr}
-\usepackage{subcaption}
-\usepackage{multicol}
-\usepackage{outlines}
-\usepackage{titlesec}
-%===================================
-\newcommand{\classinfo}{{\bf Basic Switch \\ Configuration}\\{\it CIT 167}\\{Chaz Davis}}
-\newcommand{\semester}{BCTC \\ Spring 2020}
-%===================================
-\setcounter{secnumdepth}{3}
-\newcommand{\mysection}[1]{\section*{#1}}
-\newcommand{\mysubsection}[2]{\textbf{\romannumeral #1) #2}}
-\newcommand{\mysubsubsection}[3]{\textbf{\alpha #3)}}
-%===================================
-\setlength{\headheight}{15.2pt}
-\pagestyle{fancy}
-\fancyhf{}
-\lhead{ \fancyplain{}{Chaz Davis} }
-\rhead{ \fancyplain{}{\today} }
-\cfoot{ \fancyplain{}{\thepage} }
-\renewcommand{\headrulewidth}{0.5pt}
-\renewcommand{\footrulewidth}{0pt}
-
-%===================================
-\title{\classinfo}
-\author{\semester}
-\date{\today}
-
-%===================================
+\documentclass[../EngineeringJournal_CDavis.tex]{subfiles}
 
 \begin{document}
 
-\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter[Basic Switch Configuration]{Basic Switch\linebreak[1]
+Configuration \hspace*{\fill February 21, 2020}}
+\noindent\textbf{{Packet Tracer Lab 09} \hspace*{\fill}{\textbf{CIT 167}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+%===================================
+%===================================
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+switch shit
+  \begin{outline}
+    \1 something something commands
+  \end{outline}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\clearpage
 
 %===================================
 \mysection{\textbf{Part 1: Cable the Network and Verify the Default Switch
@@ -49,54 +39,54 @@ next step.
 
 \noindent\mysubsection{2}{Verify the default switch Configuration}
 
-\mysubsubection{\bf{a}}
-\\I ran the enable command to log into priviledged
+\noindent{\bf{a)}}
+I ran the enable command to log into priviledged
 exec mode and ran the following commands:
 \hfill\break
 
-\mysubsubection{\bf{b}}
-\\We can see in Fig.~\ref{Sconfig9.1}\subref{Sconfig9runconfig} on
+\noindent{\bf{b)}}
+We can see in Fig.~\ref{Sconfig9.1}\subref{Sconfig9runconfig} on
 Pg.~\pageref{Sconfig9.1} that the switch has 24 fast ethernet ports
 and that the switch has 2 gigabit ethernet ports. We can also see that the
 vty lines have the values 0 4 and 5 15.
 \hfill\break
 
-\mysubsubection{\bf{c}}
-\\In Fig.~\ref{Sconfig9.2}\subref{Sconfig9startup} on Pg.~\pageref{Sconfig9.2}
+\noindent{\bf{c)}}
+In Fig.~\ref{Sconfig9.2}\subref{Sconfig9startup} on Pg.~\pageref{Sconfig9.2}
 that we do indeed get the 
 response {\scriptsize{\verb$startup-config is not present$}\normalsize}, 
 this is because we have not configured any settings, and
 have in fact reset the switch.
 \hfill\break
 
-\mysubsubection{\bf{d}}
-\\From the output of Fig.~\ref{Sconfig9.2}\subref{Sconfig9intvlan1} on
+\noindent{\bf{d)}}
+From the output of Fig.~\ref{Sconfig9.2}\subref{Sconfig9intvlan1} on
 Pg.~\pageref{Sconfig9.2} that that there is no ip address assigned yet, because
 we have not set it up yet, and that the mac address is 00e0.f9bd.263e.
 \hfill\break
 
-\mysubsubection{\bf{e and f}}
-\\You can see in Fig.~\ref{Sconfig9.2}~\subref{Sconfig9intvlanpconnect} 
+\noindent{\bf{e and f)}}
+You can see in Fig.~\ref{Sconfig9.2}~\subref{Sconfig9intvlanpconnect} 
 on Pg.~\pageref{Sconfig9.2} that protocols are down and vlan 1 is not set up yet.
 It's showing multicast and fifo settings after hookup.
 \hfill\break
 
-\mysubsubection{\bf{g}}
-\\You can see in Fig.~\ref{Sconfig9.3}~\subref{Sconfig9showver} 
+\noindent{\bf{g)}}
+You can see in Fig.~\ref{Sconfig9.3}~\subref{Sconfig9showver} 
 on Pg.~\pageref{Sconfig9.3} that the Cisco IOS version on the switch is
 12.2(25)FX, and the system image filename C2960-LANBASE-M, and the mac address
 is 00e0.f9bd.263e.
 \hfill\break
 
-\mysubsubection{\bf{h}}
-\\You can see in Fig.~\ref{Sconfig9.3}~\subref{Sconfig9showint6} 
+\noindent{\bf{h)}}
+You can see in Fig.~\ref{Sconfig9.3}~\subref{Sconfig9showint6} 
 on Pg.~\pageref{Sconfig9.3} that the interface is up because we connected it to
 the PC. mac address is 00e0.b037.9co6. The speed of the switch is 100mb/s and
 it is full duplex. 
 \hfill\break
 
-\mysubsubection{\bf{i}}
-\\You can see in Fig.~\ref{Sconfig9.3}~\subref{Sconfig9showvlan} 
+\noindent{\bf{i)}}
+You can see in Fig.~\ref{Sconfig9.3}~\subref{Sconfig9showvlan} 
 on Pg.~\pageref{Sconfig9.3} that the name of vlan 1 is default, currently all
 ports on on vlan 1, the default type is ethernet.
 
@@ -136,7 +126,7 @@ cable]{\label{Sconfig9intvlanpconnect}\includegraphics[width=.60\linewidth]{Figu
 
 
 \mysubsection{1}{Configure basic switch settings}
-\\I ran pasted the commands as shown by you.I ran the commands to setup the ip 
+I ran pasted the commands as shown by you.I ran the commands to setup the ip 
 address and default ip address. I set up the console and setup the vty. 
 The login command is required because it logs in
 the first time and makes us use the password afterwards.
@@ -149,7 +139,7 @@ the first time and makes us use the password afterwards.
 \mysection{\textbf{Part 3: Verify and Test Network Connectivity}}
 
 \mysubsection{1}{Display the switch configuration}
-\\You can see in Fig.~\ref{verify9}~\subref{verify9showrun} 
+You can see in Fig.~\ref{verify9}~\subref{verify9showrun} 
 on Pg.~\pageref{verify9} and Fig.~\ref{verify9}\subref{verify9showint} on
 Pg.~\pageref{verify9} that the bandwidth is 100,000 bytes,  its state is up and
 its protocol is up.
