@@ -1,0 +1,112 @@
+\documentclass[../EngineeringJournal_CDavis.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{SSH and Port \linebreak[1] Security \hspace*{\fill}{2020}}
+\noindent\textbf{{Packet Tracer Labs} \hspace*{\fill}{\textbf{CIT 167}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+\addcontentsline{toc}{chapter}{Useful Bits: SSH and Port Security}
+%===================================
+
+%===================================
+\mysection{\textbf{Configuring SSH}}
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+\begin{outline}
+  \1 All switch ports (interfaces) should be secured before the switch is deployed for production use.
+      \2 Specify a single MAC address or a group of valid MAC addresses allowed on a port.
+      \2 Specify that a port automatically shuts down if unauthorized MAC addresses are detected.
+  \1 Sticky secure MAC addresses
+      \2 MAC addresses that can be dynamically learned or manually configured, then 
+      \2 stored in the address table and added to the running configuration by stick learning:
+  \1 If the sticky secure MAC addresses are saved to the startup configuration file
+      \2 then when the switch restarts or the interface shuts down, the interface does not need to relearn the addresses. 
+      \2 If the sticky secure addresses are not saved, they will be lost.
+  \1 If sticky learning is disabled by using the 
+  {\verb$no switchport port-security mac-address sticky $}
+  interface configuration mode command
+      \2the sticky secure MAC addresses remain part of the address table, but are removed from the running configuration.
+\end{outline}
+  {\bf{Characteristics of sticky secure MAC addresses:}}
+\begin{outline}
+  \1 Learned dynamically, converted to sticky secure MAC addresses stored in the running-config.
+  \1 Removed from the running-config if port security is disabled.
+  \1 Lost when the switch reboots (power cycled).
+  \1 Saving sticky secure MAC addresses in the startup-config makes them permanent and the switch retains them after a reboot.
+  \1 Disabling sticky learning converts sticky MAC addresses to dynamic secure addresses and removes them from the running-config.
+\end{outline}
+\normalsize  
+{\bf{Note:}} The port security feature will not work until port security is
+enabled on the interface using the {\scriptsize{\verb$switchport port-security$}\normalsize}  command.
+\end{tcolorbox}
+\hspace{0.2cm}
+
+
+%===================================
+\mysection{\textbf{Port Security: Violation Modes}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+\begin{itemize}
+  \item{Protect}  When the number of secure MAC addresses reaches the limit allowed on the port, packets with unknown source addresses are dropped until a sufficient number of secure MAC addresses are removed, or the number of maximum allowable addresses is increased. There is no notification that a security violation has occurred.
+  \item{Restrict}  When the number of secure MAC addresses reaches the limit allowed on the port, packets with unknown source addresses are dropped until a sufficient number of secure MAC addresses are removed, or the number of maximum allowable addresses is increased. In this mode, there is a *notification that a security violation has occurred*.
+  \item{Shutdown}  In this ({\bf{default}}) mode, a port security violation causes the 
+      \subitem{} interface to immediately become error-disabled and turns off the port LED. It increments the violation counter. 
+        \subitem{} When a secure port is in the error-disabled state, it can be
+	brought out of this state by entering the
+	{\verb$shutdown$}  interface configuration mode
+	command followed by the {\verb$no shutdown$} command.
+\end{itemize}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%===================================
+\mysection{\textbf{Port Security: Configuring}}
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+  {\bf{Default Port Security on a Cisco Catalyst Switch}}
+\scriptsize 
+  \begin{outline}
+    \1 Port security and Sticky address learning: Disabled
+    \1 Max number of secure MAC addresses: 1
+    \1 Violation mode: Shutdown (Port shuts down when max number of secure MAC addresses exceeded).
+  \end{outline}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+%===================================
+\mysection{\textbf{Ports in Error Disabled State}}
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+  \begin{outline}
+    \1 When a port is error disabled, it is effectively shut down and no traffic is sent or received on that port.
+    \1 Port protocol and link status is changed to down; port LED will turn off; port goes into the error disabled stated.
+    \1 {\verb$show interfaces$} identifies port status as {\verb$err-disabled$}
+    \1 {\verb$show port-security interface$} shows port status as {\verb$secure-shutdown$}
+  \end{outline}
+The administrator should determine what caused the security violation before
+re-enabling the port. If an unauthorized device is connected to a secure port,
+the port should not be re-enabled until the security threat is eliminated. To
+re-enable the port, use the {\verb$shutdown$} interface configuration mode
+  command (Figure 3). Then, use the {\verb$no shutdown$} interface configuration command to make the port operational.
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+\end{document}

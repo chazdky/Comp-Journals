@@ -1,0 +1,152 @@
+\documentclass[../EngineeringJournal_CDavis.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{SSH and Port \linebreak[1] Security \hspace*{\fill}{2020}}
+\noindent\textbf{{Packet Tracer Labs} \hspace*{\fill}{\textbf{CIT 167}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+\addcontentsline{toc}{chapter}{Useful Commands: SSH and Port Security}
+%===================================
+
+%===================================
+\mysection{\textbf{Configuring SSH}}
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+{\bf{SSH configuration}}
+\scriptsize
+\begin{verbatim}
+show ip ssh                     # Verify that switch supports SSH, shows version
+
+ip domain-name <domain-name>    # Device must be minimally configured with a hostname
+ip ssh version 2                # Recommended to only enable version 2 (more secure)
+crypto key generate rsa
+username <username> privilege <level> secret <password>
+\end{verbatim}
+\normalsize  
+{\bf{Enable SSH protocol on VTY lines}}
+\scriptsize 
+  \begin{verbatim}
+line vty 0 15
+transport input ssh
+login local                      # Require local authentication from local username database
+  \end{verbatim}
+\normalsize  
+{\bf{To delete a RSA key pair}}
+\scriptsize 
+  \begin{verbatim}
+  crypto key zeroize rsa          # SSH automatically disabled when key pair is deleted.
+  \end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+%===================================
+\mysection{\textbf{ Port Security }}
+
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+  {\bf{Disable Unused Ports}}
+\scriptsize 
+- Good practice to disable unused ports; can configure range:
+  \begin{verbatim}
+  interface range <type module>/<first number>-<last number>
+    shutdown
+  \end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+  {\bf{Port Security: Operation}}
+  Static Secure MAC Address:
+\scriptsize
+  \begin{verbatim}
+  interface <interface-id>
+  switchport port-security mac-address <mac-address>
+  \end{verbatim}
+\normalsize
+Sticky secure MAC addresses - MAC addresses that can be dynamically learned or manually configured, then stored in the address table and added to the running configuration by stick learning:
+\scriptsize
+  \begin{verbatim}
+    switchport port-security mac-address sticky             # (Intf-config)
+  \end{verbatim}
+  \begin{outline}
+    \1 *All sticky secure MAC addresses are added to the address table and to the running configuration*.
+    \1 Sticky secure MAC addresses can also be manually defined (also added to running-config):
+  \end{outline}
+  \begin{verbatim}
+    switchport port-security mac-address sticky <mac-address>
+  \end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+
+%===================================
+\mysection{\textbf{Port Security: Violation Modes}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+{\bf{ To change the violation mode on a switch port: }}
+  \begin{verbatim}
+    switchport port-security violation {protect | restrict | shutdown}
+  \end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+
+%===================================
+\mysection{\textbf{Port Security: Configuring}}
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+{\bf{Configure Port Security on an Interface}}
+\scriptsize 
+\begin{verbatim}
+interface <interface_id>
+switchport mode access                              # Sets interface mode to access
+switchport port-security                            # Enables port security on the interface
+switchport port-security maximum 10                 # Max number of secure addresses allowed
+switchport port-security mac-address sticky         # Enables sticky learning
+\end{verbatim}
+\normalsize  
+- Violation mode is set to shutdown by default.
+\end{tcolorbox}
+\hspace{0.2cm}
+
+
+
+%===================================
+\mysection{\textbf{Port Security: Verifying}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+  \scriptsize 
+  {\bf{Verify Port Security Settings:}}
+  \begin{verbatim}
+  show port-security interface <interface_id>
+  \end{verbatim}
+  {\bf{Verify Secure MAC Addresses:}}
+  \begin{verbatim}
+  show port-security address
+  \end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\end{document}
