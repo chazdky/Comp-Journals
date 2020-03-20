@@ -1,0 +1,191 @@
+\documentclass[../EngineeringJournal_CDavis.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Configuring \linebreak[1] VLANs \hspace*{\fill}{2020}}
+\noindent\textbf{{Packet Tracer Labs} \hspace*{\fill}{\textbf{CIT 167}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+\addcontentsline{toc}{chapter}{Useful Commands: Configuring VLANs}
+%===================================
+
+%===================================
+\mysection{\textbf{Configuring VLANs}}
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+{\bf{SSH configuration}}
+\scriptsize
+\begin{verbatim}
+- Configurations are stored in the `flash:vlan.dat` file.
+\end{verbatim}
+\end{tcolorbox}
+
+
+%===================================
+\mysection{\textbf{Display/Verify VLANs}}
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+\begin{verbatim}
+show vlan
+show vlan brief
+show vlan summary
+show vlan id <vlan-id>
+show vlan name <vlan-name>
+
+show interfaces vlan <vlan-id>
+show interfaces <interface-id> switchport
+\end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+Create a VLAN
+\scriptsize 
+\begin{verbatim}
+vlan <vlan-id>
+name <vlan-name>
+exit
+
+vlan 100,102, 105-107	# Creates multiple VLANs
+\end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+Assigning Ports to VLANs
+\scriptsize 
+\begin{verbatim}
+interface <interface-id>
+switchport mode access
+switchport access vlan <vlan-id>
+
+interface range <interfaces> can be used to configure multipe interfaces.
+\end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+Changing VLAN Port Membership
+\scriptsize 
+\begin{verbatim}
+interface <interface-id>
+no switchport access vlan	# Removes vlan; 
+				# not necessary if want to replace
+  
+\end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+Deleting VLANs
+\scriptsize 
+\begin{verbatim}
+no vlan <vlan-id>	# Delete single VLAN
+
+delete flash:vlan.dat	# Deletes entire vlan.dat file
+
+
+- Note: before deleting a VLAN, reassign all member ports 
+to a different VLAN first. Any ports that are not moved to an 
+active VLAN are unable to communicate with other hosts after the 
+VLAN is deleted and until they are assigned to an active VLAN.
+\end{verbatim}
+\normalsize
+Restore switch to factory defaults
+\scriptsize
+\begin{verbatim}
+erase startup-config
+delete vlan.dat
+reload
+\end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+Configuring VLAN Trunks
+\scriptsize 
+\begin{verbatim}
+interface <interface-id>
+switchport mode trunk
+switchport trunk native vlan <vlan-id>
+switchport trunk allowed vlan <vlan-list>
+exit
+\end{verbatim}
+\normalsize
+Resetting the Trunk to Default State
+\scriptsize
+\begin{verbatim}
+interface <interface-id>
+no switchport trunk allowed vlan
+no switchport trunk native vlan
+end
+\end{verbatim}
+\normalsize
+Troubleshooting VLANs
+\scriptsize
+\begin{verbatim}
+show vlan
+show mac address-table
+show interfaces
+show interfaces switchport
+show interface <interface-id> switchport
+\end{verbatim}
+\begin{outline}
+\1 Each VLAN must correspond to a unique IP subnet; check IP addressing.
+\1 Check that ports belongs to expected VLANs and are active.
+\1 Check if inactive VLAN is assigned to a port: `show interfaces switchport`
+\end{outline}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+Troubleshooting Trunks
+\scriptsize 
+\begin{verbatim}
+show interfaces trunk
+\end{verbatim}
+\begin{outline}
+\1 Check whether local and peer native VLANs match (VLAN leaking occurs with mismatch).
+\1 Check whether trunk has been established. Cisco Catalyst switch ports use DTP by default; statically configure trunk links whenever possible.
+\1 Check status of trunk ports for incorrect port modes
+\1 Common configuration errors:
+\1 Native VLAN mismatches: inter-VLAN routing issues; security risk.
+\1 Trunk mode mismatches: trunk link will not work.
+\1 Allowed VLANs on trunks: unexpected or no traffic.
+\end{outline}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%======================
+\end{document}

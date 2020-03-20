@@ -15,10 +15,17 @@
 
 \hspace{0.2cm}
 \begin{tcolorbox}[width=6.3in]
+Common General Switch Issues
 \scriptsize 
-troubleshooting vlans
   \begin{outline}
-    \1 something something blah
+    \1 Physical Interface/Connectivity Issues.
+    \1 Physical Interface Speed/Duplex Issues.
+    \1 VLAN-specific Issues.
+    \1 VLAN trunking issues.
+    \1 VLAN Trunking Protocol (VTP) issues.
+    \1 Inter-VLAN Routing Issues.
+    \1 802.1D Spanning Tree Issues.
+    \1 no ip authentication mode eigrp 100 md5.  
   \end{outline}
 \end{tcolorbox}
 \hspace{0.2cm}
@@ -29,28 +36,24 @@ troubleshooting vlans
 %===================================
 \mysection{\textbf{Part 1: Test Connectivity between PCs on the Same VLAN}}
 
-\mysubsection{1}{Can PC1 ping PC4}
-\\Attempt to ping PC4 from PC1 was unsuccessful. See
+\mysubsection{1}{Can PC1 ping PC4}\\
+Attempt to ping PC4 from PC1 was unsuccessful. See
 Fig.~\ref{Ping11}~\subref{Ping11PC1}. 
 
-\noindent\mysubsection{2}{Can pc2 ping pc5}
-\\Attempt to ping PC5 from PC2 was unsuccessful. See
+\noindent\mysubsection{2}{Can pc2 ping pc5}\\
+Attempt to ping PC5 from PC2 was unsuccessful. See
 Fig.~\ref{Ping11}~\subref{Ping11PC2}. 
 
-\noindent\mysubsection{3}{Can pc3 ping pc6}
-\\Attempt to ping PC6 from PC3 was unsuccessful. See
+\noindent\mysubsection{3}{Can pc3 ping pc6}\\
+Attempt to ping PC6 from PC3 was unsuccessful. See
 Fig.~\ref{Ping11}~\subref{Ping11PC3}. 
 
 
 \begin{figure}[!hbt]\centering
-\subfloat[PC1 pinging
-PC4]{\label{Ping11PC1}\includegraphics[width=.45\linewidth]{Figures/2020-03-08-001241_397x176_scrot.png}}\par
-\subfloat[PC2 pinging
-PC5]{\label{Ping11PC2}\includegraphics[width=.45\linewidth]{Figures/2020-03-08-001302_420x218_scrot.png}}\hfill
-\subfloat[PC3 Pinging
-PC6]{\label{Ping11PC3}\includegraphics[width=.45\linewidth]{Figures/2020-03-08-001401_408x177_scrot.png}}\par
-\caption{Testing Connections on the same networks}
-\label{Ping11}
+\subfloat[PC1 pinging PC4]{\label{Ping11PC1}\includegraphics[width=.45\linewidth]{Figures/2020-03-08-001241_397x176_scrot.png}}\par
+\subfloat[PC2 pinging PC5]{\label{Ping11PC2}\includegraphics[width=.45\linewidth]{Figures/2020-03-08-001302_420x218_scrot.png}}\hfill
+\subfloat[PC3 Pinging PC6]{\label{Ping11PC3}\includegraphics[width=.45\linewidth]{Figures/2020-03-08-001401_408x177_scrot.png}}\par
+\caption{Testing Connections on the same networks}\label{Ping11}
 \end{figure}
 
 
@@ -59,12 +62,12 @@ PC6]{\label{Ping11PC3}\includegraphics[width=.45\linewidth]{Figures/2020-03-08-0
 %===================================
 \mysection{\textbf{Part 2: Investigate Connectivity Problems by Gathering Data}}
 
-\mysubsection{1}{Verify Configurations on the PCs}
-\\I checked configurations for IP address and subnetmasks on all pcs. 
+\mysubsection{1}{Verify Configurations on the PCs}\\
+I checked configurations for IP address and subnetmasks on all pcs. 
 PC5 had an incorrect IP address.
 
-\noindent\mysubsection{2 \& 3}{Verify Configs on the Switches}
-\\On switch2 vlan for subnet 30 had the 10 and 30 subnets attached to it, so I
+\noindent\mysubsection{2 \& 3}{Verify Configs on the Switches}\\
+On switch2 vlan for subnet 30 had the 10 and 30 subnets attached to it, so I
 moved the Fa0/11 interface to 10 faculty/staff. Also on S2, G0/1 was not setup
 as a trunk.
 
@@ -95,22 +98,17 @@ All pings were successful. See Fig.~\ref{Success11}.
 
 
 \begin{figure}[!hbt]\centering
-\subfloat[PC1 pinging
-PC4]{\label{Success11PC1}\includegraphics[width=.45\linewidth]{Figures/2020-03-08-074940_384x197_scrot.png}}\par
-\subfloat[PC2 pinging
-PC5]{\label{Success11PC2}\includegraphics[width=.45\linewidth]{Figures/2020-03-08-074950_375x188_scrot.png}}\hfill
-\subfloat[PC3 pinging
-PC6]{\label{Success11PC3}\includegraphics[width=.45\linewidth]{Figures/2020-03-08-075000_391x196_scrot.png}}\par
-\caption{Network connections are now all successfull}
-\label{Success11}
+\subfloat[PC1 pinging PC4]{\label{Success11PC1}\includegraphics[width=.45\linewidth]{Figures/2020-03-08-074940_384x197_scrot.png}}\par
+\subfloat[PC2 pinging PC5]{\label{Success11PC2}\includegraphics[width=.45\linewidth]{Figures/2020-03-08-074950_375x188_scrot.png}}\hfill
+\subfloat[PC3 pinging PC6]{\label{Success11PC3}\includegraphics[width=.45\linewidth]{Figures/2020-03-08-075000_391x196_scrot.png}}\par
+\caption{Network connections are now all successfull}\label{Success11}
 \end{figure}
 
 
 
 \begin{figure}[!hbt]\centering
 \includegraphics[width=.45\linewidth]{Figures/2020-03-08-075242_571x209_scrot.png}
-\caption{Successful Completion of the Activity}
-\label{Complete11}
+\caption{Successful Completion of the Activity}\label{Complete11}
 \end{figure}
 
 %===================================

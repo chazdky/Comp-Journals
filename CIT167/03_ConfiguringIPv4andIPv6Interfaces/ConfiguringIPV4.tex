@@ -43,56 +43,51 @@
 %===================================
 \mysection{\textbf{Part 1: Configuring IPv4}}
 
-\mysubsection{1}{Assign IPv4 addressing}
+\mysubsection{1}{Assign IPv4 addressing}\\
 
 \begin{figure}\centering
 \subfloat[PC1 assign]{\label{Assign3PC1}\includegraphics[width=.45\linewidth]{Figures/2020-01-23-133636_620x312_scrot.png}}\hfill
 \subfloat[PC2 assign]{\label{Assign3PC2}\includegraphics[width=.45\linewidth]{Figures/2020-01-23-133858_620x324_scrot.png}}\par 
-\caption{Assigning IPv4 addressing}
-\label{Assign3}
+\caption{Assigning IPv4 addressing}\label{Assign3}
 \end{figure}
 
 
-\noindent \\I opened up PC1 and clicked on the desktop. I then opened the
+\noindent I opened up PC1 and clicked on the desktop. I then opened the
 IPconfiguration box and entered the Information from the table. See
 Fig~\ref{Assign3}\subref{Assign3PC1}.
 \hfill\break
 
-I opened up PC2 and clicked on desktop and opened the ipconfiguration box and entered
+\noindent I opened up PC2 and clicked on desktop and opened the ipconfiguration box and entered
 the information from the table. See Fig~\ref{Assign3}\subref{Assign3PC2}.
 \hfill\break
 
 \begin{figure}[!b]\centering
 \subfloat[R1 assign]{\label{connect3V4R1}\includegraphics[width=.45\linewidth]{Figures/2020-01-23-134942_615x618_scrot.png}}\hfill
 \subfloat[Connected Network Layout]{\label{connect3V4layout}\includegraphics[width=.45\linewidth]{Figures/2020-01-23-135023_772x380_scrot.png}}\par 
-\caption{Network Connectivity}
-\label{connect3V4}
+\caption{Network Connectivity}\label{connect3V4}
 \end{figure}
 
 
-\noindent \\I opened up R1 and and used the commandline tool to enter the information
+\noindent I opened up R1 and and used the commandline tool to enter the information
 according to the chart. See Fig~\ref{connect3V4}\subref{connect3V4R1}.
-\hfill\break
 
-We can now see that PC1 PC2 and R1 are all connected to each other. See
+
+\noindent We can now see that PC1 PC2 and R1 are all connected to each other. See
 Fig~\ref{connect3V4}\subref{connect3V4layout}.
-\hfill\break
 
 \newpage
 
-\noindent\mysubsection{2}{Verify connectivity}
-\\I opened PC1 went the command line and successfully pinged the Dual stack server and
-then successfully pinged PC2. See Fig~\ref{verify3V4}\subref{verify3V4PC1}
-\\I opened PC2 went the command line and successfully pinged the Dual stack server and
+\noindent\mysubsection{2}{Verify connectivity}\\
+I opened PC1 went the command line and successfully pinged the Dual stack server and
+then successfully pinged PC2. See Fig~\ref{verify3V4}\subref{verify3V4PC1}\\
+\noindent I opened PC2 went the command line and successfully pinged the Dual stack server and
 then successfully pinged PC1 See Fig~\ref{verify3V4}\subref{verify3V4PC2}
 
-\hfill\break
 
 \begin{figure}[!hbt]\centering
 \subfloat[PC1 Successfully pinging the server and PC2]{\label{verify3V4PC1}\includegraphics[width=.44\linewidth]{Figures/2020-01-23-135818_436x498_scrot.png}}\hfill
 \subfloat[PC2 successfully pinging the server and PC1]{\label{verify3V4PC2}\includegraphics[width=.45\linewidth]{Figures/2020-01-23-135928_532x598_scrot.png}}\par 
-\caption{Network Verification}
-\label{verify3V4}
+\caption{Network Verification}\label{verify3V4}
 \end{figure}
 
 
@@ -106,39 +101,34 @@ then successfully pinged PC1 See Fig~\ref{verify3V4}\subref{verify3V4PC2}
 \subfloat[IPv6 Configuration for PC4]{\label{config3V6PC4}\includegraphics[width=.45\linewidth]{Figures/2020-01-23-142659_598x189_scrot.png}}\par 
 \subfloat[Configuring R2 Interface]{\label{config3V6R2}\includegraphics[width=.40\linewidth]{Figures/2020-01-23-141350_617x658_scrot.png}}\hfill
 \subfloat[PC3 PC4 and R2 Connections]{\label{config3V6layout}\includegraphics[width=.44\linewidth]{Figures/2020-01-23-142804_399x388_scrot.png}}\par 
-\caption{IPv6 Configuration}
-\label{config3V6}
+\caption{IPv6 Configuration}\label{config3V6}
 \end{figure}
 
-\noindent\mysubsection{1}{Assign IPv6 addressing and verify connectivity}
-\\I opened up PC3 and clicked on desktop and opened the ipconfiguration box and
+\noindent\mysubsection{1}{Assign IPv6 addressing and verify connectivity}\\
+I opened up PC3 and clicked on desktop and opened the ipconfiguration box and
 entered the information from the table. See Fig~\ref{config3V6}\subref{config3V6PC3}.
 
-\hfill\break
 
-I opened up PC4 and clicked on desktop and opened the ipconfiguration box and entered
+\noindent I opened up PC4 and clicked on desktop and opened the ipconfiguration box and entered
 the information from the table. See Fig~\ref{config3V6}\subref{config3V6PC4}
 
-\hfill\break
 
-I opened up R2 and and used the commandline tool to enter the information according to
+\noindent I opened up R2 and and used the commandline tool to enter the information according to
 the chart. See Fig~\ref{config3V6}\subref{config3V6R2}.
 
-\hfill\break
 
-We can now see in Fig~\ref{config3V6}\subref{config3V6layout} that PC3 PC4 and R2 are all connected to each other. 
+\noindent We can now see in Fig~\ref{config3V6}\subref{config3V6layout} that PC3 PC4 and R2 are all connected to each other. 
 
 \clearpage
 
-\noindent\mysubsection{2}{Verify connectivity}
-\\I opened PC3 went the command line and successfully pinged the Dual stack server and then successfully pinged PC4
+\noindent\mysubsection{2}{Verify connectivity}\\
+I opened PC3 went the command line and successfully pinged the Dual stack server and then successfully pinged PC4
 
 \begin{figure}[!hbt]\centering
   \subfloat[Pinging the Server and PC4 from PC3]{\label{Verify3V6PC3}\includegraphics[width=.46\linewidth]{Figures/2020-01-23-142804_399x388_scrot.png}}\hfill
   \subfloat[Pinging the Server and PC3 from PC4]{\label{Verify3V6PC4}\includegraphics[width=.45\linewidth]{Figures/2020-01-23-142902_387x451_scrot.png}}\par
   \subfloat[Topology of the Completed Network]{\label{Verify3V6Topology}\includegraphics[width=.45\linewidth]{Figures/2020-01-23-143037_1304x1378_scrot.png}}
-  \caption{Verifying Connectivity of the Network}
-  \label{Verify3V6}
+  \caption{Verifying Connectivity of the Network}\label{Verify3V6}
 \end{figure}
 
 I opened PC4 went the command line and successfully pinged the Dual stack server and then successfully pinged PC3
@@ -151,8 +141,8 @@ I opened PC4 went the command line and successfully pinged the Dual stack server
 %===================================
 \mysection{Part 3: Wrap Up}
 
-\mysubsection{1}{Success}
-\\Clicked the Check results button 100\% success
+\mysubsection{1}{Success}\\
+Clicked the Check results button 100\% success
 \begin{center}
 	\includegraphics[scale=0.30]{Figures/2020-01-23-143037_1304x1378_scrot.png}
 \end{center}

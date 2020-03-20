@@ -40,10 +40,8 @@ tables.
 
 
 \begin{figure}[!hbt]\centering
-\subfloat[R2 misconfiguration of static
-Route]{\label{msconfig4R2}\includegraphics[width=.55\linewidth]{Figures/2020-02-09-155109_487x295_scrot.png}}\par
-\caption{Network Misconfigured: \\R2 - not set up for R1}
-\label{misconfig4}
+\subfloat[R2 misconfiguration of static Route]{\label{msconfig4R2}\includegraphics[width=.55\linewidth]{Figures/2020-02-09-155109_487x295_scrot.png}}\par
+\caption{Network Misconfigured:\\ R2 - not set up for R1}\label{misconfig4}
 \end{figure}
 
 
@@ -59,29 +57,27 @@ I believe the solution is going to be statically configuring the routes for rout
 I went to R2 first, and configured the network settings. First, by removing the
 incorrect routing tables by running the 
 \\commands {\scriptsize{\verb$no ip route 172.31.1.0 255.255.255.128 172.31.1.198$}\normalsize} and {\scriptsize{\verb$no ip route 172.31.1.128 255.255.255.192 172.31.1.194$}\normalsize}  Then, I repopulated the table by running the 
-\\commands {\scriptsize{\verb$ip route 172.31.1.0 255.255.255.128 172.31.1.194$}\normalsize} and {\scriptsize{\verb$ip route 172.31.1.128 255.255.255.192 172.31.1.198$}\normalsize}. 
-\\I then went to R3 and cofigured it for PC1 by running {\scriptsize{\verb$ip route 172.31.1.0 255.255.255.128 serial 0/0/1$}\normalsize} 
+commands {\scriptsize{\verb$ip route 172.31.1.0 255.255.255.128 172.31.1.194$}\normalsize} and 
+{\scriptsize{\verb$ip route 172.31.1.128 255.255.255.192 172.31.1.198$}\normalsize}.\\ 
+I then went to R3 and cofigured it for PC1 by running {\scriptsize{\verb$ip route 172.31.1.0 255.255.255.128 serial 0/0/1$}\normalsize} 
 
 
 %===================================
 \mysection{\textbf{Part 4: Verify that the issue is resolved}}
 Finally I verified that the network is now working properly. Table on
-Pg.~\pageref{success4}
-\\As you can see in FIg.~\ref{success4}\subref{success4ping1} I was successfully able to ping the server from PC1. 
-\\I then opened the web browser on PC1 Fig.~\ref{success4}\subref{success4web1} and PC2
+Pg.~\pageref{success4}\\
+As you can see in FIg.~\ref{success4}\subref{success4ping1} I was
+successfully able to ping the server from PC1.\\
+I then opened the web browser on PC1 Fig.~\ref{success4}\subref{success4web1} and PC2
 Fig.~\ref{success4}\subref{success4web2} and entered the servers
 address and got the congratulations message.
 
 
 \begin{figure}[!hbt]\centering
-\subfloat[Successful Ping of the server from
-PC1]{\label{success4ping1}\includegraphics[width=.45\linewidth]{Figures/2020-02-09-161308_394x212_scrot.png}}\par
-\subfloat[Successful Webpage Login
-PC1]{\label{success4web1}\includegraphics[width=.45\linewidth]{Figures/2020-02-09-161510_958x493_scrot.png}}\hfill
-\subfloat[Successful Webpage Login from
-PC2]{\label{success4web2}\includegraphics[width=.45\linewidth]{Figures/2020-02-09-161602_958x493_scrot.png}}\par
-\caption{Successful Verification}
-\label{success4}
+\subfloat[Successful Ping of the server from PC1]{\label{success4ping1}\includegraphics[width=.45\linewidth]{Figures/2020-02-09-161308_394x212_scrot.png}}\par
+\subfloat[Successful Webpage Login PC1]{\label{success4web1}\includegraphics[width=.45\linewidth]{Figures/2020-02-09-161510_958x493_scrot.png}}\hfill
+\subfloat[Successful Webpage Login from PC2]{\label{success4web2}\includegraphics[width=.45\linewidth]{Figures/2020-02-09-161602_958x493_scrot.png}}\par
+\caption{Successful Verification}\label{success4}
 \end{figure}
 
 

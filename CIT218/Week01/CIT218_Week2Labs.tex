@@ -1,0 +1,65 @@
+\documentclass{report}
+
+\usepackage{textcomp}
+\usepackage[demo]{graphicx}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{outlines}
+%===================================
+\newcommand{\classinfo}{{\bf RHEL 134 \\ Week 02 Labs}\\{\it CIT 218}\\{Chaz Davis}}
+\newcommand{\semester}{BCTC \\ Spring 2020}
+%===================================
+\newcommand{\mysection}[1]{\section*{#1}}
+\newcommand{\mysubsection}[2]{\textbf{\romannumeral #1) #2}}
+%===================================
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{ \fancyplain{}{Chaz Davis} }
+\rhead{ \fancyplain{}{\today} }
+\cfoot{ \fancyplain{}{\thepage} }
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%===================================
+\title{\classinfo}
+\author{\semester}
+\date{\today}
+
+%===================================
+
+\begin{document}
+
+\maketitle
+
+%===================================
+\mysection{Questions}
+
+\mysubsection{1}{Echo the hostname of the system to a file in the /tmp
+directory in 5 minutes using the at command. List the scheduled at job.
+Provide the
+output.}
+
+
+
+\noindent\mysubsection{2}{Create a cronjob that echoes your first and last name
+every Sunday at 2pm during the month of March. Provide the
+details.}
+
+
+
+\noindent\mysubsection{3}{Provide the output of all nice levels for current
+running processes with the highest nice levels sorted at the
+top.}
+
+
+
+\noindent\mysubsection{4}{Run the top command in the background. Change the nice
+level of the backgrounded top process to the lowest priority. Provide
+the
+output.}
+
+%===================================
+\end{document}

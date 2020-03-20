@@ -49,19 +49,18 @@
 %===================================
 \mysection{\textbf{Part 1:Set Up the Topology}}
 
-\mysubsection{1}{Cable the Network}
+\mysubsection{1}{Cable the Network}\\
 I started off by placing the the router(1941), the switch(2960), and 2 windows 7 pcs on the the canvas.
 
 
 \begin{figure}[!hbt]
   \centering
   \includegraphics[width=.45\linewidth]{Figures/2020-01-28-090220_966x444_scrot.png}
-  \caption{View of the Network Topology}
-  \label{Topo1}
+  \caption{View of the Network Topology}\label{Topo1}
 \end{figure}
 
-\noindent\mysubsection{2}{Wiring up the routers}
-\\Next I used straight copper wiring to connect the router the switch and the two pcs
+\noindent\mysubsection{2}{Wiring up the routers}\\
+Next I used straight copper wiring to connect the router the switch and the two pcs
 and renamed the accordingly. See Fig~\ref{netconfig1}.
 
 \begin{figure}[!hbt]
@@ -91,7 +90,7 @@ and renamed the accordingly. See Fig~\ref{netconfig1}.
 I started off by configuring the ipaddress, subnet mask, and default gateways on PC-A and PC-B
 \hfill\break
 
-\noindent\mysubsection{1}{Configuring the PCs}
+\noindent\mysubsection{1}{Configuring the PCs}\\
 I started off by configuring the IPs for the PC's. See Fig~\ref{config1}.
 
 \begin{figure}[!hbt]
@@ -111,8 +110,8 @@ I started off by configuring the IPs for the PC's. See Fig~\ref{config1}.
 
 \clearpage
 
-\noindent\mysubsection{2}{Configuring the router}
-\\Next I logged into the router went to the commandline, and escalated to priveledged exec mode.
+\noindent\mysubsection{2}{Configuring the router}\\
+Next I logged into the router went to the commandline, and escalated to priveledged exec mode.
 
 \hfill\break
 
@@ -212,7 +211,7 @@ R1(config-if)#
 \clearpage
 %===================================
 
-\subsubsection{3}{Verifying network connectivity}
+\subsubsection{3}{Verifying network connectivity}\\
 
 \begin{figure}[!hbt]\centering
   \subfloat[R1 Enable]{\label{Verify1R1}\includegraphics[width=.45\linewidth]{Figures/2020-01-28-100133_679x351_scrot.png}}\par
@@ -225,8 +224,8 @@ R1(config-if)#
 
 %===================================
 \mysection{\textbf{Part 3: Display Router Information}}
-\mysubsection{1}{important hardware and software info}
-\\While logged in with telnet I ran the following commands
+\mysubsection{1}{important hardware and software info}\\
+While logged in with telnet I ran the following commands
 \begin{mdframed}
 \scriptsize
 \begin{verbatim}
@@ -292,7 +291,7 @@ File  Length   Name/status
 \normalsize
 \end{mdframed}
 
-\mysubsection{2}{Display Startup Info}
+\mysubsection{2}{Display Startup Info}\\
 \begin{mdframed}
 \scriptsize
 \begin{verbatim}
@@ -360,8 +359,8 @@ From this we can see that the passwords are encrypted
 I used show startup-config | begin vty
 \\It did not like that command wouldnt show any info
 
-\mysubsection{3}{Display the routing table on the router}
-\\ i ran show ip route
+\mysubsection{3}{Display the routing table on the router}\\
+I ran show ip route
 \begin{mdframed}
 \scriptsize
 \begin{verbatim}
@@ -392,7 +391,7 @@ R1#
 
 There are two entries with a C encoding
 
-\mysubsection{4}{Display a summary list}
+\mysubsection{4}{Display a summary list}\\
 Display a summary list of the interfaces on the router
 \\I ran the show ip interface brief command:
 
@@ -408,6 +407,6 @@ Vlan1               unassigned  YES unset  administratively down down
 \normalsize
 \end{mdframed}
 
-when we gave the command `no shut` that changed the gig ethernet ports from down to up.
+when we gave the command `no shut' that changed the gig ethernet ports from down to up.
 
 \end{document}
