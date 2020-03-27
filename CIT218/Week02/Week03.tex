@@ -1,0 +1,65 @@
+\documentclass{report}
+
+\usepackage{textcomp}
+\usepackage[demo]{graphicx}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{outlines}
+%===================================
+\newcommand{\classinfo}{{\bf RHEL 134 \\ Week 03 Labs}\\{\it CIT 218}\\{Chaz Davis}}
+\newcommand{\semester}{BCTC \\ Spring 2020}
+%===================================
+\newcommand{\mysection}[1]{\section*{#1}}
+\newcommand{\mysubsection}[2]{\textbf{\romannumeral #1) #2}}
+%===================================
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{ \fancyplain{}{Chaz Davis} }
+\rhead{ \fancyplain{}{\today} }
+\cfoot{ \fancyplain{}{\thepage} }
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%===================================
+\title{\classinfo}
+\author{\semester}
+\date{\today}
+
+%===================================
+
+\begin{document}
+
+\maketitle
+
+%===================================
+\mysection{\textbf{Part 1: Questions}}
+
+
+\mysubsection{1}{Create a file named “firstname_lastname”. Set an ACL for your current user to have read-only access to the file. Provide the ACL details of the file.}\\
+a
+
+
+\noindent\mysubsection{2}{Create a directory named “CIT218” in your home directory. Set an ACL to allow recursive read/write access on the directory for the “student” group. Provide the ACL details of the directory.}\\
+a
+
+
+\noindent\mysubsection{3}{Change the mode of SELinux to disabled. Provide the output.}\\
+a
+
+
+
+\noindent\mysubsection{4}{Create a file named “firstname_lastname”. Change the file context to httpd_sys_content_t.  Provide the SELinux details of the file.}\\
+a
+
+
+
+\noindent\mysubsection{5}{Allow the HTTPS service through the firewall. Make it permanent and reload the firewall. }\\
+a
+
+
+%===================================
+
+\end{document}
