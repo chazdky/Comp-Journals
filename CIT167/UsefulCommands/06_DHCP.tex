@@ -1,0 +1,102 @@
+\documentclass[../EngineeringJournal_CDavis.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Useful Commands: \linebreak[1] DHCP \hspace*{\fill}{2020}}
+\noindent\textbf{{Packet Tracer labs} \hspace*{\fill}{\textbf{CIT 167}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+\addcontentsline{toc}{chapter}{Useful Commands: DHCP}
+
+%===================================
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+Release/Renew IP Address on Windows
+  \scriptsize 
+  \begin{verbatim}
+  ipconfig /release
+  ipconfig /renew         # PC will broadcast a DHCPDISCOVER message
+  \end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+DHCPv4 Relay Configuration
+\begin{verbatim}
+  \scriptsize 
+  interface <interface-id>
+  ip helper-address <DHCP-IPv4-server-address>
+  exit
+\end{verbatim}
+  Example:
+  \begin{itemize}
+    \item{- Router1:} 
+      \subitem{- G0/0 connected to network1 192.168.10.0/24 with PC1} 
+      \subitem{- G0/1 connected to network2 192.168.20.0/24 with DHCP server at 192.168.20.5} 
+    \item{- Router1 will need to setup a DHCPv4 relay for PC1 to be able to use DHCP on network2.} 
+  \end{itemize}
+\begin{verbatim}
+  interface g0/0
+    ip helper-address 192.168.20.5
+    end
+    
+  show ip interface   # Verify configuration
+\end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+Verify Router DHCPv4 Configuration
+  \scriptsize 
+If the IPv4 helper address is not configured properly 
+(for when DHCPv4 server is located on a separate LAN from the client), 
+client DHCPv4 requests are not forwarded to the DHCPv4 server.
+  \begin{verbatim}
+    show running-config | section interface <interface-id>
+    show running-config | include no service dhcp
+  \end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+DHCPv4 on Routers: Debugging
+  \scriptsize 
+  \begin{itemize}
+    \item{Verify that the router is receiving the DHCPv4 request from the client:} 
+      \subitem{The DHCPv4 process fails if the router is not receiving requests from the client.} 
+      \subitem{This involves configuring an ACL for debugging output.} 
+  \end{itemize}
+  \begin{verbatim}
+    conf t
+      access-list 100 permit udp any any eq 78
+      access-list 100 permit udp any any eq 68
+      end
+      
+    debug ip packet 100
+    debug ip dhcp server events
+  \end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%===================================
+
+\end{document}

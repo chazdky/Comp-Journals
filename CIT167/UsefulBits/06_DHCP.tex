@@ -1,0 +1,160 @@
+\documentclass[../EngineeringJournal_CDavis.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Useful Bits: \linebreak[1] DHCP \hspace*{\fill}{2020}}
+\noindent\textbf{{Packet Tracer labs} \hspace*{\fill}{\textbf{CIT 167}}}\linebreak[1]
+{{Spring 2020} \hspace*{\fill}{Chaz Davis}}                             
+\addcontentsline{toc}{chapter}{Useful Bits: DHCP}
+
+%===================================
+
+%===================================
+\mysection{\textbf{DHCPv4: Basic Configuration}}
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+Steps:
+\begin{itemize}
+\item{1.} Exclude IPv4 Addresses: e.g. those assigned to devices that require static addresses - routers, servers, printers, other manually configured devices.
+  \begin{verbatim}
+  \scriptsize 
+    \begin{verbatim}
+  ip dhcp excluded-address <single-ip>
+  ip dhcp excluded-address <low-address> <high-address>
+  \end{verbatim}
+  \normalsize  
+
+\item{2.} Configuring a DHCPv4 Pool that will be used for assignment
+  \scriptsize 
+  \begin{verbatim}
+  ip dhcp pool <pool-name>        # Enters DHCPv4 config mode
+  \end{verbatim}
+  \normalsize  
+
+\item{3.} Configuring Specific Tasks
+    \subitem{Required:} 
+	\scriptsize 
+	\begin{verbatim}
+	  network <network-num> [ mask | /prefix-length ]
+	  default-router <address [ address2 ... address8 ]
+	\end{verbatim}
+	\normalsize  
+
+    \subitem{Optional:} 
+	\scriptsize 
+	\begin{verbatim}
+	  dns-server <address> [ address2 .. address8 ]
+	  domain-name <name>
+	  lease ( days [hours] [minutes] | infinite )
+	  netbios-name-server <address> [ address2 ... address8 ]
+	\end{verbatim}
+	\normalsize  
+    \subitem{Example:} 
+	\scriptsize 
+	\begin{verbatim}
+	  ip dhcp excluded-address 192.168.10.1 192.168.10.9
+	  ip dhcp excluded-address 192.168.10.254
+	  ip dhcp pool LAN-POOL-1
+	    network 192.168.10.0 255.255.255.0
+	    default-router 192.168.10.1
+	    dns-server 192.168.11.5
+	    domain-name example.com
+	    exit
+	\end{verbatim}
+\end{itemize}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+%===================================
+\mysection{\textbf{DHCPv4: Troubleshooting}}
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+  \begin{itemize}
+\item{1.} Resolve IPv4 address conflicts
+\item{2.} Verify physical connectivity
+\item{3.} Test with a static IPv4 address
+\item{4.} Verify switch port configuration
+\item{5.}  Resolve IPv4 address conflicts
+  \end{itemize}
+  \begin{verbatim}
+  show ip dhcp conflict
+  \end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+%===================================
+\mysection{\textbf{DHCPv6: Router COnfiguration}}
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+\scriptsize 
+  IPv6 routing must b enabled before a router can send RA messages:
+  \begin{verbatim}
+  ipv6 unicast-routing
+  \end{verbatim}
+  RA messages are configured on an individual interface of a router. 
+  To re-enable an interface for SLAAC that might have been set to 
+  another option, the M and O flags need to be reset to their initial 
+  values of 0. This is done using the following interface 
+  configuration mode commands:
+  \begin{verbatim}
+  Router(config-if)# no ipv6 nd managed-config-flag 
+  Router(config-if)# no ipv6 nd other-config-flag 
+  \end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+
+%===================================
+\mysection{\textbf{DHCPv6: Stateless Vs Stateful}}
+
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+Stateless DHCPv6
+\scriptsize 
+For stateless DHCPv6, the O flag is set to 1 and the M flag is left at 
+the default setting of 0. The O flag value of 1 is used to inform the 
+client that additional configuration information is available from a 
+stateless DHCPv6 server.
+
+To modify the RA message sent on the interface of a router to indicate 
+stateless DHCPv6, use the following command:
+  \begin{verbatim}
+  Router(config-if)# ipv6 nd other-config-flag 
+  \end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+\hspace{0.2cm}
+\begin{tcolorbox}[width=6.3in]
+Stateful DHCPv6
+\scriptsize 
+The M flag indicates whether or not to use stateful DHCPv6. 
+The O flag is not involved. The following command is used to change 
+the M flag from 0 to 1 to signify stateful DHCPv6:
+  \begin{verbatim}
+  Router(config-if)# ipv6 nd managed-config-flag 
+  \end{verbatim}
+\end{tcolorbox}
+\hspace{0.2cm}
+\normalsize  
+
+%===================================
+
+\end{document}
