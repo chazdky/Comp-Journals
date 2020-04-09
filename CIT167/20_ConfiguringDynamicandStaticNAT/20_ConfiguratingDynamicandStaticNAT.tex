@@ -35,13 +35,157 @@
 \maketitle
 
 %===================================
-\mysection{\textbf{Part 1: }}
+\mysection{\textbf{Part 1: Build the Network and Verify Connectivity}}
+
+\mysubsection{1}{Cable the network as shown in the topology}\\
+a
+
+\noindent\mysubsection{2}{Configure PC Hosts}\\
+a
+
+\noindent\mysubsection{3}{Initialize and reload the routers and switches}\\
+a
+
+\noindent\mysubsection{4}{Configure basic settings for each router}\\
+a
+
+\noindent\mysubsection{5}{Create a simulated web server on ISP}\\
+a
+
+\noindent\mysubsection{6}{Configure Static routing}\\
+a
+
+\noindent\mysubsection{7}{Save the running Config to the startup config}\\
+a
+
+\noindent\mysubsection{8}{Verify the network connectivity}\\
+a
 
 
 
 
+%===================================
+\mysection{\textbf{Part 2: Configure and Verify Static NAT}}
+
+\mysubsection{1}{Configure static Mapping}\\
+a
+
+\noindent\mysubsection{2}{Specify the Interfaces}\\
+a
+
+\noindent\mysubsection{3}{Test the Configuration}\\
+a
+
+{\bf{a.}}\\
+{\bf{What is the translation of the Inside local host?}}\\
+{\bf{192.168.1.20=}} 209.165.200.225
 
 
+{\bf{The Inside global address is assigned by?}} By the ISP and the NAT pool
+
+
+{\bf{The inside local address is assigned by?}} by the Administrator
+
+{\bf{b.}}
+{\bf{What port number was used in this ICMP exchange?}} we can see that port 5
+was used the first time, followed by port 6, then port 7, and finally port 8.
+
+{\bf{c.}}
+{\bf{What was the protocol used in this translation?}} TCP
+
+
+{\bf{What are the port numbers used?}} Ports 1025 and 1026 were used from the
+inside Because I ran once with the SSH/TELNET client, and then I ran in from
+the commandline as well using the telnet command. And port 23 was used to reach the telnet on the loopback interface.
+
+{\bf{Inside global/local:}}\\
+Inside global is 209.165.200.225:1025 and Inside local is 192.168.1.20:1025
+
+
+{\bf{Outside global/local:}}\\
+Outside Global is 192.31.7.1:23 and outside local is also 192.31.7.1:23
+
+{\bf{d.}}
+
+{\bf{e.}}
+
+{\bf{f.}}
+
+
+
+%===================================
+\mysection{\textbf{Part 3: Configure and Verify Dynamic NAT }}
+
+\mysubsection{1}{Clear NATs}\\
+a
+\noindent\mysubsection{2}{Define an ACL that matches the LAN private IP address
+range}\\
+a
+\noindent\mysubsection{3}{Verify that the NAT interface configurations are
+still valid}\\
+a
+\noindent\mysubsection{4}{Define the pool of usable public IP addresses}\\
+a
+\noindent\mysubsection{5}{Define the NAT from the inside source list to the
+outside pool}\\
+a
+\noindent\mysubsection{6}{Test the configuration}\\
+a
+{\bf{a.}}\\
+{\bf{What is the translation of the Inside local host address for PC-B?}}
+{\bf{192.168.1.21=}} 209.165.200.242
+
+
+{\bf{A dynamic NAT entry was added to the table with ICMP as the protocol when PC-B sent an ICMP
+message to 192.31.7.1 on ISP}}
+
+
+{\bf{What port number was used in this ICMP exchange?}} ports 5,6,7, and 8
+
+
+{\bf{b.}}\\
+{\bf{From PC-B, open a browser and enter the IP address of the ISP-simulated web server (Lo0 interface).
+When prompted, log in as webuser with a password of webpass.}}
+
+
+
+{\bf{c.}}\\
+{\bf{What protocol was used in this translation? }} TCP
+
+
+{\bf{What port numbers were used?}}\\
+{\bf{Inside: }} ports 1025 -- 1028
+
+
+{\bf{Outside: }} port 80
+
+
+{\bf{What well-known port number and service was used?}} port 80, which is HTTP
+port.
+
+
+{\bf{d.}}
+
+\noindent\mysubsection{7}{Remove the static NAT entry}\\
+a
+
+
+%===================================
+\mysection{\textbf{Reflection}}
+
+\mysubsection{1}{Why would NAT be used in a network?}\\
+Thee won't be enough ipv4 addresses, so, NAT provides a way to ensure that we
+have the available resources and addresses to match. Secondly, NAT ensures a
+higher level of security, we can hide resources that we don't want to be
+reachable by the outside network.
+
+\noindent\mysubsection{2}{What are the limitations of NAT?}\\
+NAT needs ip information or port information in the ip header or TCP header for translations.
+Also, End-to-End addressing is lost. So, certain peer-to-peer applications may
+not work. Switching delays may occur. It complicates
+tunneling protocols. Impropoer use of a network layer device, router, tampering
+with port numbers.
+  
 %===================================
 
 \end{document}
