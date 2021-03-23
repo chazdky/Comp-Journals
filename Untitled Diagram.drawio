@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-03-23T13:06:04.044Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="Wc6XbnrQ0XfxaWvL2fKS" version="14.5.0" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2021-03-23T13:09:07.559Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="HWlfmGCAgbMKMA0Zp83j" version="14.5.0" type="github" pages="3">
   <diagram id="QcT4WYxxXB78vr11Nmpd" name="Page-1">
     <mxGraphModel dx="460" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -233,11 +233,11 @@
         <mxCell id="zFgZ9hsOf5gYY-8B4Prh-29" value="Kentucky Clinic Pharmacy - Primary" style="text;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zFgZ9hsOf5gYY-8B4Prh-1" vertex="1">
           <mxGeometry x="530" y="560" width="230" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="rYf7LyDpBaEIBFHa_25n-14" value="&lt;span style=&quot;background-color: rgb(168 , 168 , 168)&quot;&gt;UK Prd Servers&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zFgZ9hsOf5gYY-8B4Prh-1" vertex="1">
-          <mxGeometry x="530" y="350" width="90" height="20" as="geometry" />
+        <mxCell id="rYf7LyDpBaEIBFHa_25n-14" value="&lt;span style=&quot;background-color: rgb(168 , 168 , 168)&quot;&gt;UK PRDCAESERVER03&amp;nbsp;&lt;/span&gt;" style="text;html=1;strokeColor=#23445d;fillColor=#bac8d3;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zFgZ9hsOf5gYY-8B4Prh-1" vertex="1">
+          <mxGeometry x="530" y="341" width="230" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="rYf7LyDpBaEIBFHa_25n-17" value="&lt;span style=&quot;background-color: rgb(166 , 166 , 166)&quot;&gt;UK Prd Server&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zFgZ9hsOf5gYY-8B4Prh-1" vertex="1">
-          <mxGeometry x="530" y="421" width="80" height="20" as="geometry" />
+        <mxCell id="rYf7LyDpBaEIBFHa_25n-17" value="&lt;span style=&quot;background-color: rgb(166 , 166 , 166)&quot;&gt;UK PRDCAESERVER01&lt;/span&gt;" style="text;html=1;strokeColor=#23445d;fillColor=#bac8d3;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zFgZ9hsOf5gYY-8B4Prh-1" vertex="1">
+          <mxGeometry x="530" y="421" width="230" height="20" as="geometry" />
         </mxCell>
         <mxCell id="jP5LZIC4KNixccppNWiR-0" value="June Buchanan Med Center - Secondary" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zFgZ9hsOf5gYY-8B4Prh-1">
           <mxGeometry x="530" y="260" width="230" height="20" as="geometry" />
@@ -265,6 +265,9 @@
         </mxCell>
         <mxCell id="jP5LZIC4KNixccppNWiR-16" value="Kentucky Clinic Pharmacy - IVR" style="text;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zFgZ9hsOf5gYY-8B4Prh-1">
           <mxGeometry x="530" y="660" width="230" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="3_VGNYpzgW5nRB_Ncr7y-1" value="UK PRDCAESERVER02" style="text;html=1;strokeColor=#23445d;fillColor=#bac8d3;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zFgZ9hsOf5gYY-8B4Prh-1">
+          <mxGeometry x="530" y="361" width="230" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
