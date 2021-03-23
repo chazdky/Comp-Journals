@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-03-23T12:52:23.266Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="M4tHgz2Iotpu-i_qRr90" version="14.5.0" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2021-03-23T12:55:42.246Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="7YPjXgR4WqmNvabOHu_5" version="14.5.0" type="github" pages="3">
   <diagram id="QcT4WYxxXB78vr11Nmpd" name="Page-1">
     <mxGraphModel dx="460" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -224,14 +224,14 @@
         <mxCell id="zFgZ9hsOf5gYY-8B4Prh-26" value="UK Owned KVM" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zFgZ9hsOf5gYY-8B4Prh-1" vertex="1">
           <mxGeometry x="530" y="321" width="230" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="zFgZ9hsOf5gYY-8B4Prh-27" value="Test Servers" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zFgZ9hsOf5gYY-8B4Prh-1" vertex="1">
+        <mxCell id="zFgZ9hsOf5gYY-8B4Prh-27" value="Test Server - Primary" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zFgZ9hsOf5gYY-8B4Prh-1" vertex="1">
           <mxGeometry x="530" y="380" width="230" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="zFgZ9hsOf5gYY-8B4Prh-28" value="Turfland Clinic Pharmacy" style="text;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zFgZ9hsOf5gYY-8B4Prh-1" vertex="1">
-          <mxGeometry x="530" y="441" width="230" height="60" as="geometry" />
+        <mxCell id="zFgZ9hsOf5gYY-8B4Prh-28" value="Turfland Clinic Pharmacy - Primary" style="text;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zFgZ9hsOf5gYY-8B4Prh-1" vertex="1">
+          <mxGeometry x="530" y="441" width="230" height="19" as="geometry" />
         </mxCell>
-        <mxCell id="zFgZ9hsOf5gYY-8B4Prh-29" value="Kentucky Clinic Pharmacy" style="text;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zFgZ9hsOf5gYY-8B4Prh-1" vertex="1">
-          <mxGeometry x="530" y="560" width="230" height="60" as="geometry" />
+        <mxCell id="zFgZ9hsOf5gYY-8B4Prh-29" value="Kentucky Clinic Pharmacy - Primary" style="text;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zFgZ9hsOf5gYY-8B4Prh-1" vertex="1">
+          <mxGeometry x="530" y="560" width="230" height="20" as="geometry" />
         </mxCell>
         <mxCell id="rYf7LyDpBaEIBFHa_25n-14" value="&lt;span style=&quot;background-color: rgb(168 , 168 , 168)&quot;&gt;UK Prd Servers&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="zFgZ9hsOf5gYY-8B4Prh-1" vertex="1">
           <mxGeometry x="530" y="350" width="90" height="20" as="geometry" />
@@ -244,6 +244,27 @@
         </mxCell>
         <mxCell id="jP5LZIC4KNixccppNWiR-2" value="June Buchanan Med Center - IVR" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zFgZ9hsOf5gYY-8B4Prh-1">
           <mxGeometry x="530" y="280" width="230" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="jP5LZIC4KNixccppNWiR-4" value="Test Server - Secondary" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zFgZ9hsOf5gYY-8B4Prh-1">
+          <mxGeometry x="530" y="401" width="230" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="jP5LZIC4KNixccppNWiR-6" value="Turfland Clinic Pharmacy - Secondary" style="text;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zFgZ9hsOf5gYY-8B4Prh-1">
+          <mxGeometry x="530" y="460" width="230" height="19" as="geometry" />
+        </mxCell>
+        <mxCell id="jP5LZIC4KNixccppNWiR-8" value="Turfland Clinic Pharmacy - RAS" style="text;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zFgZ9hsOf5gYY-8B4Prh-1">
+          <mxGeometry x="530" y="479" width="230" height="19" as="geometry" />
+        </mxCell>
+        <mxCell id="jP5LZIC4KNixccppNWiR-10" value="Turfland Clinic Pharmacy - IVR" style="text;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zFgZ9hsOf5gYY-8B4Prh-1">
+          <mxGeometry x="530" y="498" width="230" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="jP5LZIC4KNixccppNWiR-12" value="Kentucky Clinic Pharmacy - Secondary" style="text;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zFgZ9hsOf5gYY-8B4Prh-1">
+          <mxGeometry x="530" y="580" width="230" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="jP5LZIC4KNixccppNWiR-14" value="Kentucky Clinic Pharmacy - RAS" style="text;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zFgZ9hsOf5gYY-8B4Prh-1">
+          <mxGeometry x="530" y="610" width="230" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="jP5LZIC4KNixccppNWiR-16" value="Kentucky Clinic Pharmacy - IVR" style="text;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zFgZ9hsOf5gYY-8B4Prh-1">
+          <mxGeometry x="530" y="660" width="230" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
